@@ -23,7 +23,11 @@
                 <label>E-mail</label><input class="text-form" id="email-register" type="text" name="e-mail" placeholder="Podaj swój e-mail" required><br>
                 <label>Hasło</label><input class="password-form" id="password" type="password" name="haslo" placeholder="Podaj swoje hasło" required><br>
                 <button class="przycisk" type="submit" id="zarejestruj" name="zarejestruj">Zarejestruj</button>
-            </form>
+            </form><br>
+            
+        </div>
+        <div id="login=link" class="link-div">
+            <a href="login.php" id="link-login" class="link">Zaloguj się</a>
         </div>
     </section>
 

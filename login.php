@@ -24,7 +24,7 @@
                 <button class="przycisk" type="submit" id="zaloguj" name="zaloguj">Zaloguj</button>
             </form>
         </div>
-        <div id="rejestracja" class="rejestr">
+        <div id="rejestracja" class="link-div">
             <a class="link" id="link-register" href="register-form.php">Zarejestruj się</a>
         </div>
     </section>

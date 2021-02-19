@@ -16,6 +16,7 @@
         <div id="login" class="user-panel">
             <!-- przekierowuje do strony logowania, pokazuje status użytkownika, czy zalogowany-->
             <a href="login.php" id="link-login" class="link">Zaloguj się</a>
+            <a href="register-form.php" id="link-register" class="link">Zarejestruj się</a>
         </div>
     </section>
 
