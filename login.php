@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Strona logowania do Broadcasting Center - strony do automatycznego odtwarzania playslist tworzonych przez uczniów  w radiowęźle szkolnym">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/css-login.css">
     <title>Zaloguj się do Broadcasting Center</title>
 </head>
 <body>

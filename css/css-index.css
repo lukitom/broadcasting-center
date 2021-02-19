@@ -1,0 +1,55 @@
+header{
+    background-color: #999;
+    float: left;
+    width: 100%;
+    vertical-align: middle;
+}
+.header-tag{
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    float: left;
+    width: 50%;
+    background-color: #888;
+}
+.user-panel{
+    background-color: #777;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    font-size: 1rem;
+    text-align: right;
+    width: 50%;
+    float: left;
+}
+a{
+    text-decoration: none;
+}
+.nav-section{
+    width: 100%;
+    text-align: center;
+    background-color: #aff;
+    float: left;
+}
+.container{
+    background-color: #faf;
+    width: 100%;
+    float: left;
+}
+.panel-lewy{
+    background-color: #ffa;
+    width: 50%;
+    float: left;
+}
+.panel-prawy{
+    background-color: #8f8;
+    width: 50%;
+    float: right;
+}
+.footer-section{
+    background-color: #88F;
+    text-align: center;
+    width: 100%;
+    float: left;
+}
+.footer-tag{
+    text-align: right;
+}
