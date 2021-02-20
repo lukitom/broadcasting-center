@@ -6,3 +6,13 @@ body{
     margin: 0;
     padding: 0;
 }
+body::-webkit-scrollbar{
+    width: .375rem;    
+}
+body::-webkit-scrollbar-track{
+    background: #ddd;
+}
+body::-webkit-scrollbar-thumb{
+    background: linear-gradient(#00f 0%, #08f);
+    border-radius: 3px;
+}
