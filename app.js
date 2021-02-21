@@ -3,6 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
+const session = require('express-session');
 const routes = require('./routes/index');
 
 // utworzenie instancji express
@@ -20,6 +21,15 @@ app.set(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 // obsługa ciasteczek
 app.use(cookieParser());
+
+// konfiguracja sesji nwm jak to działa dokładnie
+// TODO: check this
+app.use(session({
+    secret: 'test',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {}
+}));
 
 // wiadomości typu Flash
 app.use(flash());

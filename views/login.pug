@@ -19,13 +19,12 @@
     <section id="main" class="container">
         <div id="logowanie" class="form-div">
             <!-- po zalogowaniu przenosi na stronę główną "index"-->
-            <form action="" method="POST" id="login" class="formularz">
-                <label>Login</label><input class="text-form" id="login-log-in" type="text" name="login-log" placeholder="Podaj swój login" required /><br>
-                <label>Hasło</label><input class="password-form" id="password" type="password" name="haslo" placeholder="Podaj hasło" required /><br>
+            <form action="/login-mechanism" method="POST" id="login" class="formularz">
+                <label>Login</label><input class="text-form" id="login-log-in" type="text" name="login" placeholder="Podaj swój login" required /><br>
+                <label>Hasło</label><input class="password-form" id="password" type="password" name="password" placeholder="Podaj hasło" required /><br>
                 <button class="przycisk" type="submit" id="zaloguj" name="zaloguj">Zaloguj</button>
             </form>
             <form action="index"> 
-            //- TODO: poprawić przenoszenie, w Node Js to nie działa
                 <button type="submit">Powrót na stonę główną</button>
             </form>
         </div>
