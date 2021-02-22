@@ -20,16 +20,19 @@
         <div id="logowanie" class="form-div">
             <!-- po zalogowaniu przenosi na stronę główną "index"-->
             <form action="/login-mechanism" method="POST" id="login" class="formularz">
-                <label>Login</label><input class="text-form" id="login-log-in" type="text" name="login" placeholder="Podaj swój login" required /><br>
-                <label>Hasło</label><input class="password-form" id="password" type="password" name="password" placeholder="Podaj hasło" required /><br>
+                <label for="login-log-in">Login</label>
+                <input class="text-form" id="loginLogIn" type="text" name="loginLog" placeholder="Podaj swój login" required /><br>
+
+                <label for="password">Hasło</label>
+                <input class="password-form" id="password" type="password" name="haslo" placeholder="Podaj hasło" required /><br>
                 <button class="przycisk" type="submit" id="zaloguj" name="zaloguj">Zaloguj</button>
             </form>
-            <form action="index"> 
+            <form action="/index"> 
                 <button type="submit">Powrót na stonę główną</button>
             </form>
         </div>
         <div id="rejestracja" class="link-div">
-            <a class="link" id="link-register" href="register-form">Zarejestruj się</a>
+            <a class="link" id="link-register" href="/register-form">Zarejestruj się</a>
         </div>
     </section>
     <section id="stopka" class="footer-section">
