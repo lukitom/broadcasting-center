@@ -29,6 +29,25 @@ a{
     margin-right: 15%;
     text-align: center;
 }
+.nav-section{
+    width: 100%;
+    background-color: #aff;
+    float: left;
+}
+.nav-subpage{
+    text-align: left;
+    float: left;
+}
+.nav-login{
+    text-align: right;
+    float: right;
+}
+.link-subpage , .active{
+    margin-left: 1rem;
+}
+.link-login{
+    margin-right: 1rem;
+}
 .footer-section{
     background-color: #88F;
     text-align: center;

@@ -16,6 +16,18 @@
             Blah Blah
         </header>
     </section>
+        <section id="menu-section" class="nav-section">
+        <nav class="nav-subpage" id="menu">
+            <!-- miejsce na menu-->
+            <a href="/index" class="link-subpage">Strona Główna</a>
+            <a href="/suggestion-song" class="link-subpage">Sugerowane utwory</a>
+            <a href="/vote-song" class="link-subpage">Zagłosuj na piosenkę</a>
+        </nav>
+        <nav class="nav-login" id="menu-2">
+            <a href="/login" id="link-login" class="active">Zaloguj się</a>
+            <a href="/register-form" id="link-register" class="link-login">Zarejestruj się</a>
+        </nav>
+    </section>
     <section id="main" class="container">
         <div id="logowanie" class="form-div">
             <!-- po zalogowaniu przenosi na stronę główną "index"-->
@@ -26,9 +38,6 @@
                 <label for="password">Hasło</label>
                 <input class="password-form" id="password" type="password" name="haslo" placeholder="Podaj hasło" required /><br>
                 <button class="przycisk" type="submit" id="zaloguj" name="zaloguj">Zaloguj</button>
-            </form>
-            <form action="/index"> 
-                <button type="submit">Powrót na stonę główną</button>
             </form>
         </div>
         <div id="rejestracja" class="link-div">
