@@ -43,7 +43,7 @@ a{
     float: right;
 }
 .link-subpage , .active{
-    margin-left: 1rem;
+    margin-right: 1rem;
 }
 .link-login{
     margin-right: 1rem;
