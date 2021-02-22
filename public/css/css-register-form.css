@@ -42,7 +42,10 @@ a{
     text-align: right;
     float: right;
 }
-.link-subpage , .active{
+.link-subpage {
+    margin-left: 1rem;
+}
+.active{
     margin-right: 1rem;
 }
 .link-login{
