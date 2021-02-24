@@ -13,7 +13,7 @@ a{
     width: 100%;
     float: left;
 }
-.form-div{
+.formDiv{
     background-color: #ffa;
     width: 70%;
     float: left;
@@ -21,7 +21,7 @@ a{
     margin-right: 15%;
     text-align: center;
 }
-.link-div{
+.linkDiv{
     background-color: #8f8;
     width: 70%;
     float: left;
@@ -29,34 +29,34 @@ a{
     margin-right: 15%;
     text-align: center;
 }
-.nav-section{
+.navSection{
     width: 100%;
     background-color: #aff;
     float: left;
 }
-.nav-subpage{
+.navSubpage{
     text-align: left;
     float: left;
 }
-.nav-login{
+.navLogin{
     text-align: right;
     float: right;
 }
-.link-subpage {
+.linkSubpage {
     margin-left: 1rem;
 }
 .active{
     margin-right: 1rem;
 }
-.link-login{
+.linkLogin{
     margin-right: 1rem;
 }
-.footer-section{
+.footerSection{
     background-color: #88F;
     text-align: center;
     width: 100%;
     float: left;
 }
-.footer-tag{
+.footerTag{
     text-align: right;
 }
