@@ -2,9 +2,9 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const flash = require('connect-flash');
 const mysql = require('mysql');
-const dbConnected = require('./database/ConnectionDatabase.js');
+// const dbConnectedMysql = require('./database/ConnectionDatabaseMysql.js');
+const dbConnectedMongo = require('./database/ConnectionDatabaseMongodb.js');
 const session = require('express-session');
 const routes = require('./routes/index');
 
@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // obsługa przesyłanych danych metodą POST z formularzy
 app.set(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 // obsługa ciasteczek
 app.use(cookieParser());
 
@@ -33,11 +33,18 @@ app.use(session({
     cookie: {}
 }));
 
-// wiadomości typu Flash
-app.use(flash());
+// wiadomości typu Flash usunięte i niepotrzebne
+// app.use(flash());
 
 // przekierowanie obsługi ścieżek do innego pliku
 app.use('/', routes);
 
+app.use((req, res, next) => {
+    res.status(404).json({ error: "Not found" });
+})
+
+app.use((err, req, res, next) => {
+    res.status(500).json({ error: err.message });
+})
 
 module.exports = app;
