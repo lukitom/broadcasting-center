@@ -8,19 +8,23 @@ header{
 a{
     text-decoration: none;
 }
-.nav-section{
+.navSection{
     width: 100%;
     background-color: #aff;
     float: left;
 }
-.nav-subpage{
+.navLogin{
+    text-align: right;
+    float: right;
+}
+.navSubpage{
     text-align: left;
     float: left;
 }
-.link-subpage , .active{
+.linkSubpage , .active{
     margin-left: 1rem;
 }
-.link-login{
+.linkLogin{
     margin-right: 1rem;
 }
 .container{
@@ -28,7 +32,7 @@ a{
     width: 100%;
     float: left;
 }
-.container-mid{
+.containerMid{
     background-color: #ffa;
     width: 70%;
     float: left;
@@ -36,12 +40,12 @@ a{
     margin-right: 15%;
     text-align: center;
 }
-.footer-section{
+.footerSection{
     background-color: #88F;
     text-align: center;
     width: 100%;
     float: left;
 }
-.footer-tag{
+.footerTag{
     text-align: right;
 }

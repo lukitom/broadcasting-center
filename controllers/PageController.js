@@ -6,14 +6,14 @@ exports.login = async (req, res) => {
     await res.render('login');
 };
 
-exports.register_form = async (req, res) => {
-    await res.render('register-form');
+exports.registerSorm = (req, res) => {
+    res.render('registerForm');
 };
 
-exports.suggestion_song = async (req, res) => {
-    await res.render('suggestion-song');
+exports.suggestionSong = (req, res) => {
+    res.render('suggestionSong');
 };
 
-exports.vote_song = async (req, res) => {
-    await res.render('vote-song');
+exports.voteSong = (req, res) => {
+    res.render('voteSong');
 };

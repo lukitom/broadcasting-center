@@ -1,54 +1,36 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Strona logowania do Broadcasting Center - strony do automatycznego odtwarzania playslist tworzonych przez uczniów  w radiowęźle szkolnym">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/css-login.css">
-    <title>Zaloguj się do Broadcasting Center</title>
-</head>
-<body>
-    <section id="naglowek" class="header-section">
-        <header id="header" class="header-tag">
-            <!-- miejsce na nagłówek-->
-            Blah Blah
-        </header>
-    </section>
-        <section id="menu-section" class="nav-section">
-        <nav class="nav-subpage" id="menu">
-            <!-- miejsce na menu-->
-            <a href="/index" class="link-subpage">Strona Główna</a>
-            <a href="/suggestion-song" class="link-subpage">Sugerowane utwory</a>
-            <a href="/vote-song" class="link-subpage">Zagłosuj na piosenkę</a>
-        </nav>
-        <nav class="nav-login" id="menu-2">
-            <a href="/login" id="link-login" class="active">Zaloguj się</a>
-            <a href="/register-form" id="link-register" class="link-login">Zarejestruj się</a>
-        </nav>
-    </section>
-    <section id="main" class="container">
-        <div id="logowanie" class="form-div">
-            <!-- po zalogowaniu przenosi na stronę główną "index"-->
-            <form action="/login-mechanism" method="POST" id="login" class="formularz">
-                <label for="login-log-in">Login</label>
-                <input class="text-form" id="loginLogIn" type="text" name="loginLog" placeholder="Podaj swój login" required /><br>
-
-                <label for="password">Hasło</label>
-                <input class="password-form" id="password" type="password" name="haslo" placeholder="Podaj hasło" required /><br>
-                <button class="przycisk" type="submit" id="zaloguj" name="zaloguj">Zaloguj</button>
-            </form>
-        </div>
-        <div id="rejestracja" class="link-div">
-            <a class="link" id="link-register" href="/register-form">Zarejestruj się</a>
-        </div>
-    </section>
-    <section id="stopka" class="footer-section">
-        <footer id="footer" class="footer-tag">
-            <!-- stopka-->
-            <p>( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)</p>
-        </footer>
-    </section>
-</body>
-</html>
+doctype html
+html(lang="pl")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="description" content="Strona logowania do Broadcasting Center - strony do automatycznego odtwarzania playslist tworzonych przez uczniów  w radiowęźle szkolnym")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" type="text/css" href="css/main.css")
+        link(rel="stylesheet" type="text/css" href="css/css-login.css")
+        title Zaloguj się do Broadcasting Center
+    body
+        section(id="naglowek" class="headerSection")
+            header(id="header" class="headerTag") Blah Blah
+        section(id="menuSection" class="navSection")
+            nav(id="menu" class="navSubpage")
+                a(class="linkSubpage" href="/index") Strona główna
+                a(class="linkSubpage" href="/suggestionSong") Sugerowane utwory
+                a(class="linkSubpage" href="/voteSong") Zagłosuj na piosenkę
+            nav(class="navLogin" id="menu2")
+                a(class="active" id="linkLogin" href="/login") Zaloguj się
+                a(class="linkLogin" id="linkRegister" href="/registerForm") Zarejestruj się
+        section(id="main" class="container")
+            div(id="logowanie" class="formDiv")
+                form(id="login" class="formularz" action="/loginMechanism" method="POST")
+                    label(for="loginLogIn") Login
+                    input(class="textForm" id="loginLogIn" type="text" name="loginLog" placeholder="Podaj swój login" required)
+                    br
+                    label(for="password") Hasło
+                    input(class="passwordForm" id="password" type="password" name="haslo" placeholder="Podaj hasło" required)
+                    br
+                    button(class="przycisk" id="zaloguj" type="submit" name="zaloguj") Zaloguj
+            div(id="rejestracja" class="linkDiv")
+                a(class="link" id="linkRegister" href="/registerForm") Zarejestruj się
+        section(id="stopka" class="footerSection")
+            footer(id="footer" class="footerTag")
+                p ( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)

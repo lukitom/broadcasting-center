@@ -8,39 +8,46 @@ header{
 a{
     text-decoration: none;
 }
-.nav-section{
+.navSection{
     width: 100%;
     background-color: #aff;
     float: left;
 }
-.nav-subpage{
+.navSubpage{
     text-align: left;
     float: left;
 }
-.link-subpage , .active{
+.linkSubpage , .active{
     margin-left: 1rem;
+}
+.linkLogin{
+    margin-right: 1rem;
+}
+.navLogin{
+    text-align: right;
+    float: right;
 }
 .container{
     background-color: #faf;
     width: 100%;
     float: left;
 }
-.panel-lewy{
+.panelLewy{
     background-color: #ffa;
     width: 50%;
     float: left;
 }
-.panel-prawy{
+.panelPrawy{
     background-color: #8f8;
     width: 50%;
     float: right;
 }
-.footer-section{
+.footerSection{
     background-color: #88F;
     text-align: center;
     width: 100%;
     float: left;
 }
-.footer-tag{
+.footerTag{
     text-align: right;
 }

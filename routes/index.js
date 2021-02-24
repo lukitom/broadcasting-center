@@ -9,12 +9,12 @@ const RegisterController = require('../controllers/RegisterController')
 router.get('/', PageConstroller.index);
 router.get('/index', PageConstroller.index);
 router.get('/login', PageConstroller.login);
-router.get('/register-form', PageConstroller.register_form);
-router.get('/suggestion-song', PageConstroller.suggestion_song);
-router.get('/vote-song', PageConstroller.vote_song);
+router.get('/registerForm', PageConstroller.registerSorm);
+router.get('/suggestionSong', PageConstroller.suggestionSong);
+router.get('/voteSong', PageConstroller.voteSong);
 
 
-router.post('/login-mechanism', LoginConstroller.loginSystem);
-router.post('/register-mechanism', RegisterController.registerSystem);
+router.post('/loginMechanism', LoginConstroller.loginSystem);
+router.post('/registerMechanism', RegisterController.registerSystem);
 
 module.exports = router;
