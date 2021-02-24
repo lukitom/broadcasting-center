@@ -6,14 +6,14 @@ exports.login = (req, res) => {
     res.render('login');
 };
 
-exports.register_form = (req, res) => {
-    res.render('register-form');
+exports.registerSorm = (req, res) => {
+    res.render('registerForm');
 };
 
-exports.suggestion_song = (req, res) => {
-    res.render('suggestion-song');
+exports.suggestionSong = (req, res) => {
+    res.render('suggestionSong');
 };
 
-exports.vote_song = (req, res) => {
-    res.render('vote-song');
+exports.voteSong = (req, res) => {
+    res.render('voteSong');
 };
