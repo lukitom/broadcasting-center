@@ -37,7 +37,8 @@ exports.loginSystem = async (req, res) => {
         if (await bcrypt.compare(req.body.haslo, user[0].password)) {
             // TODO: dokończyć przypisywanie do sesji
             req.session.userId = user[0]._id;
-            res.send('Success');
+            // res.send('Success');
+            res.redirect('/index');
         } else {
             res.send('Not Allowed');
         }
