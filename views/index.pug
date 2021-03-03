@@ -16,19 +16,22 @@ html(lang="pl")
                 a(class="linkSubpage" href="/suggestionSong") Sugerowane utwory
                 a(class="linkSubpage" href="/voteSong") Zagłosuj na piosenkę
             nav(class="navLogin" id="menu2")
-                a(class="linkLogin" id="linkLogin" href="/login") Zaloguj się
-                a(class="linkLogin" id="linkRegister" href="/registerForm") Zarejestruj się
+                - const User={logged: true};
+                if !User.logged
+                    a(class="linkLogin" id="linkLogin" href="/login") Zaloguj się
+                    a(class="linkLogin" id="linkRegister" href="/registerForm") Zarejestruj się
+                else 
+                    a(class="linkLogin"  href="/logOut") Wyloguj się
         section(id="main" class="container")
             div(id="playlista" class="panelLewy")
-                p -Muzyka
-                p -Muzyka
-                p -Muzyka
-                p -Muzyka
+                - const playlista =[{title: "....", author: "......", url: "......."}, {title: "....", author: "......", url: "......."},{title: "....", author: "......", url: "......."},{title: "....", author: "......", url: "......."},{title: "....", author: "......", url: "......."}];
+                
+                each n, i in playlista
+                    p= "title: " + n.title + ", autor: "+ n.author + ", url: " + n.url
             div(id="odsluchane" class="panelPrawy")
-                p - Odsłuchane -
-                p - Odsłuchane -
-                p - Odsłuchane -
-                p - Odsłuchane -
+                - const odsluchane =[{title: "....", author: "......", url: "......."}, {title: "....", author: "......", url: "......."},{title: "....", author: "......", url: "......."},{title: "....", author: "......", url: "......."},{title: "....", author: "......", url: "......."}];
+                each n, i in odsluchane
+                    p= "title: " + n.title + ", autor: "+ n.author + ", url: " + n.url
         section(id="stopka" class="footerSection")
             footer(id="footer" class="footerTag")
                 p ( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)
