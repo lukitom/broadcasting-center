@@ -27,10 +27,15 @@ app.use(cookieParser());
 // konfiguracja sesji nwm jak to działa dokładnie
 // TODO: check this
 app.use(session({
-    secret: 'test',
+    name: "sid",
     resave: false,
-    saveUninitialized: true,
-    cookie: {}
+    saveUninitialized: false,
+    secret: 'test',
+    cookie: {
+        maxAge: 10 * 60 * 1000,
+        sameSite: true,
+        secure: false,
+    }
 }));
 
 // wiadomości typu Flash usunięte i niepotrzebne

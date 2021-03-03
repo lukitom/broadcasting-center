@@ -8,6 +8,8 @@ mongoose.connect(uri, {
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true,
-});
+})
+    .then(() => { })
+    .catch((err) => { console.log(`${err}`)});
 
 module.exports = mongoose.connection;
