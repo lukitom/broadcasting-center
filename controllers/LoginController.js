@@ -29,8 +29,8 @@ exports.loginSystem = async (req, res) => {
 
     // const user = UserModel.find(user => UserModel.login == req.body.loginLog);
     const user = await UserModel.find({ login: req.body.loginLog });
-    if (user == null) {
-        return res.status(400).Send('Cannot find user');
+    if (!user.length) {
+        return res.status(400).send('Cannot find user');
     }
 
     try {

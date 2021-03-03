@@ -14,7 +14,7 @@ router.get('/suggestionSong', PageConstroller.suggestionSong);
 router.get('/voteSong', PageConstroller.voteSong);
 
 
-router.post('/loginMechanism', LoginConstroller.loginSystem);
-router.post('/registerMechanism', RegisterController.registerSystem);
+router.post('/login', LoginConstroller.loginSystem);
+router.post('/register', RegisterController.registerSystem);
 
 module.exports = router;
