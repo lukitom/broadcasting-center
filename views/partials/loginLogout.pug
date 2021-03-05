@@ -1,0 +1,6 @@
+nav(class="navLogin" id="menu2")
+    if !User.logged
+        a(class= "linkLogin" id = "linkLogin" href = "/login") Zaloguj się
+        a(class= "linkLogin" id = "linkRegister" href = "/registerForm") Zarejestruj się
+    else
+        a(class= "linkLogin"  href = "/logOut") Wyloguj się

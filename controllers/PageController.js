@@ -85,7 +85,7 @@ exports.index = async (req, res) => {
     await res.render('index',{
         playlista,
         User,
-        odsluchane: odsluchane
+        odsluchane
     });
 };
 
