@@ -18,18 +18,19 @@ html(lang="pl")
                 a(class="linkSubpage" href="/voteSong") Zagłosuj na piosenkę
             nav(class="navLogin" id="menu2")
                 a(class="linkLogin" id="linkLogin" href="/login") Zaloguj się
-                a(class="active" id="linkRegister" href="/registerForm") Zarejestruj się
+                a(class="active" id="linkRegister" href="/register") Zarejestruj się
         section(id="main" class="container")
-            div(id="formDegisterDiv" class="formDiv")
-                form(id="registerDorm" class="formularz" action="/register" method="POST")
+            div(id="formRegisterDiv" class="formDiv")
+                form(id="registerForm" class="formularz" action="/register" method="POST")
+                    include ./partials/messages
                     label(for="loginRegisterId") Login: 
-                    input(class="textForm" id="loginRegisterId" type="text" name="loginRegister" placeholder="Podaj login" required)
+                    input(class="textForm" id="loginRegisterId" type="text" name="login" placeholder="Podaj login" required)
                     br
                     label(for="emailRegister") E-mail: 
                     input(class="textForm" id="emailRegister" type="text" name="email" placeholder="Podaj swój e-amil" required)
                     br
                     label(for="password") Hasło: 
-                    input(class="passwordForm" id="password" type="password" name="haslo" placeholder="Podaj swoje hasło" required)
+                    input(class="passwordForm" id="password" type="password" name="password" placeholder="Podaj swoje hasło" required)
                     br
                     button(class="przycisk" id="zarejestruj" type="submit" name="zarejestruj") Zarejestruj
             div(class="linkDiv" id="loginLink")
