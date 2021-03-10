@@ -1,15 +1,21 @@
 const express = require('express');
+require('dotenv').config();
 const path = require('path');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const mysql = require('mysql');
-// const dbConnectedMysql = require('./database/ConnectionDatabaseMysql.js');
-const dbConnectedMongo = require('./database/ConnectionDatabaseMongodb.js');
+//// const mysql = require('mysql');
+//// const dbConnectedMysql = require('./database/ConnectionDatabaseMysql.js');
+require('./database/ConnectionDatabaseMongodb.js');
 const session = require('express-session');
+const flash = require('connect-flash');
 const routes = require('./routes/index');
+const passport = require('passport');
 
 // utworzenie instancji express
 const app = express();
+
+// ustawienia modułu passport
+require('./middleware/passport')(passport);
 
 // ustawienie miejsca widoków
 app.set('views', path.join(__dirname, 'views'));
@@ -19,8 +25,11 @@ app.set('view engine', 'pug')
 app.use(express.static(path.join(__dirname, 'public')));
 
 // obsługa przesyłanych danych metodą POST z formularzy
-app.set(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// deprecated
+////app.set(bodyParser.json());
+//// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
+
 // obsługa ciasteczek
 app.use(cookieParser());
 
@@ -34,20 +43,34 @@ app.use(session({
     cookie: {
         maxAge: 10 * 60 * 1000,
         sameSite: true,
-        secure: false,
+        secure: process.env.ENV === 'production',
     }
 }));
 
-// wiadomości typu Flash usunięte i niepotrzebne
-// app.use(flash());
+// ! TODO: ustawić flasha do logowania i rejestracji (msg)
+// wiadomości typu Flash usunięte i niepotrzebne -> chyba
+app.use(flash());
+
+// app.use((req, res, next) => {
+//     res.locals.success.msg = req.flash('success_msg');
+//     res.locals.error.msg = req.flash('error_msg');
+//     res.locals.error = req.flash('error');
+//     next();
+// })
+
+// uruchomienie modułu passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // przekierowanie obsługi ścieżek do innego pliku
 app.use('/', routes);
 
+// ! TODO: sprawdzić czy trzeba next
 app.use((req, res, next) => {
     res.status(404).json({ error: "Not found" });
 })
 
+// ! TODO: sprawdzić czy trzeba next
 app.use((err, req, res, next) => {
     res.status(500).json({ error: err.message });
 })
