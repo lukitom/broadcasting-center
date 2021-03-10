@@ -5,19 +5,20 @@ const PageConstroller = require('../controllers/PageController')
 const LoginConstroller = require('../controllers/LoginController')
 const RegisterController = require('../controllers/RegisterController')
 
-const isAuthenticate = require('../middleware/authenticate').isAuthenticate;
+// const isAuthenticate = require('../middleware/authenticate').isAuthenticate;
+const { ensureAutheticated, canRegisterLogin } = require('../middleware/authenticate');
 
 // ogsługa konkretnych podstron
 router.get('/', PageConstroller.index);
 router.get('/index', PageConstroller.index);
-router.get('/login', PageConstroller.login);
-router.get('/registerForm', PageConstroller.registerSorm);
-router.get('/suggestionSong', isAuthenticate, PageConstroller.suggestionSong);
-router.get('/voteSong', isAuthenticate, PageConstroller.voteSong);
+router.get('/login', canRegisterLogin, PageConstroller.login);
+router.get('/register', canRegisterLogin, PageConstroller.register);
+router.get('/suggestionSong', ensureAutheticated, PageConstroller.suggestionSong);
+router.get('/voteSong', ensureAutheticated, PageConstroller.voteSong);
 router.get('/logOut', PageConstroller.logOut);
 
 
-router.post('/login', LoginConstroller.loginSystem);
-router.post('/register', RegisterController.registerSystem);
+router.post('/login', canRegisterLogin, LoginConstroller.loginSystem);
+router.post('/register', canRegisterLogin, RegisterController.registerSystem);
 
 module.exports = router;
