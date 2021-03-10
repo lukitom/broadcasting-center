@@ -7,6 +7,8 @@ html(lang="pl")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet" type="text/css" href="css/main.css")
         link(rel="stylesheet" type="text/css" href="css/css-vote-song.css")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+        script(src="js/vote.js")
         title Strona główna Broadcasting Center
     body
         header(id="naglowek" class="headerSection")
@@ -21,11 +23,12 @@ html(lang="pl")
                 a(class="linkLogin" id="linkRegister" href="/registerForm") Zarejestruj się
         section(id="main" class="container")
             div(id="playlista" class="panelLewy")
-                p  Utwór - Głosuj -
-                p  Utwór - Głosuj -
-                p  Utwór - Głosuj -
-                p  Utwór - Głosuj -
-                p  Utwór - Głosuj -
+                - let value = 1;
+                each n, i in playlista
+                    p= "title: " + n.title + ", autor: "+ n.artist + ", url: " + n.uri
+                        button(class="przycisk" value=value) Głosuj
+                    - value++;
+                
             div(id="odsluchane" class="panelPrawy")
                 p - Wynik Głosowania -
                 p - Wynik Głosowania -
