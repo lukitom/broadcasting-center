@@ -1,16 +1,25 @@
-header{
-    background-color: #999;
-    float: left;
+.header-section{
     width: 100%;
+    background-color: #0074B1;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+.header-tag{
+    color: #fff;
     font-size: 2.5rem;
     text-transform: uppercase;
+    display: inline-block;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
 }
 a{
     text-decoration: none;
 }
 .nav-section{
     width: 100%;
-    background-color: #aff;
+    background-color: #fff;
+    padding-bottom: .5rem;
     float: left;
 }
 .nav-subpage{
@@ -23,31 +32,55 @@ a{
 }
 .link-subpage , .active{
     margin-left: 1rem;
+    padding: 0.5rem;
+    background-color: #10B6D1;
+    border-radius: 1rem;
+    color: #fff;
+    transition: 150ms;
 }
 .link-login{
     margin-right: 1rem;
+    padding: 0.5rem;
+    background-color: #1CC984;
+    border-radius: 1rem;
+    color: #fff;
+    transition: 150ms;
+}
+.link-subpage:hover, .active:hover{
+    background-color: #12C7E3;
+}
+.link-login:hover{
+    background-color: #20E395;
 }
 .container{
-    background-color: #faf;
-    width: 100%;
-    float: left;
+    background-color: #fff;
+    width: 1550px;
+    display: inline-block;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 .panel-lewy{
-    background-color: #ffa;
-    width: 50%;
+    background-color: #12C7E3;
+    width: 750px;
     float: left;
+    color: #fff;
+    border-radius: 1rem;
 }
 .panel-prawy{
-    background-color: #8f8;
-    width: 50%;
+    background-color: #20E395;
+    width: 750px;
     float: right;
+    color: #fff;
+    border-radius: 1rem;
 }
 .footer-section{
-    background-color: #88F;
+    background-color: #0074B1;
+    color: #fff;
     text-align: center;
     width: 100%;
     float: left;
 }
 .footer-tag{
     text-align: right;
+    margin-right: 1rem;
 }

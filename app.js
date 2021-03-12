@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const mysql = require('mysql');
-const dbConnected = require('./database/ConnectionDatabase.js');
+//const dbConnected = require('./database/ConnectionDatabase.js');
 const session = require('express-session');
 const routes = require('./routes/index');
 
