@@ -1,10 +1,10 @@
-.header-section{
+.headerSection{
     width: 100%;
     background-color: #0074B1;
     margin-bottom: 1rem;
     text-align: left;
 }
-.header-tag{
+.headerTag{
     color: #fff;
     font-size: 2.5rem;
     text-transform: uppercase;
@@ -46,10 +46,10 @@ a{
     color: #fff;
     transition: 150ms;
 }
-.link-subpage:hover, .active:hover{
+.linkSubpage:hover, .active:hover{
     background-color: #12C7E3;
 }
-.link-login:hover{
+.linkLogin:hover{
     background-color: #20E395;
 }
 .container{
@@ -59,21 +59,21 @@ a{
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
-.panel-lewy{
+.panelLewy{
     background-color: #12C7E3;
     width: 750px;
     float: left;
     color: #fff;
     border-radius: 1rem;
 }
-.panel-prawy{
+.panelPrawy{
     background-color: #20E395;
     width: 750px;
     float: right;
     color: #fff;
     border-radius: 1rem;
 }
-.footer-section{
+.footerSection{
     background-color: #0074B1;
     color: #fff;
     text-align: center;
