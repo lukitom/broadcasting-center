@@ -28,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // deprecated
 ////app.set(bodyParser.json());
 //// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // obsługa ciasteczek
