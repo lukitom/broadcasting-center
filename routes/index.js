@@ -18,7 +18,7 @@ router.get('/suggestionSong', ensureAutheticated, PageConstroller.suggestionSong
 router.get('/voteSong', ensureAutheticated, PageConstroller.voteSong);
 router.get('/logOut', PageConstroller.logOut);
 
-router.get('/test', SpotifyTrackController.test);
+router.get('/spotify/song/playlist/:id', SpotifyTrackController.playlist);
 
 router.post('/login', canRegisterLogin, LoginConstroller.loginSystem);
 router.post('/register', canRegisterLogin, RegisterController.registerSystem);
