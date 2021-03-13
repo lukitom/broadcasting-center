@@ -48,7 +48,7 @@ app.use(session({
     }
 }));
 
-// ! TODO: ustawić flasha do logowania i rejestracji (msg)
+// ! TODO: ustawić flasha do rejestracji - przy logowaniu jest i korzysta z fragmentów templatki .pug
 // wiadomości typu Flash usunięte i niepotrzebne -> chyba
 app.use(flash());
 

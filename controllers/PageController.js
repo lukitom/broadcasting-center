@@ -126,11 +126,15 @@ exports.logOut = (req, res) => {
 
 // logowanie i rejestracja
 exports.login = async (req, res) => {
+    const errors = req.flash().error || [];
+
     const User = {
         logged: false,
     };
+
     await res.render('login', {
-        User
+        User,
+        errors
     });
 };
 
@@ -138,6 +142,7 @@ exports.register = (req, res) => {
     const User = {
         logged: false,
     };
+
     res.render('register', {
         User
     });
