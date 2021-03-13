@@ -15,7 +15,9 @@ html(lang="pl")
         section(id="main" class="container")
             div(id="playlista" class="panelLewy")
                 each n, i in playlista
-                    p= "title: " + n.title + ", autor: "+ n.artist + ", url: " + n.uri
+                    p
+                        | #{n.title} / #{n.artist} - 
+                        a(class="link" href=n.uri) Posłuchaj fragmentu
             div(id="odsluchane" class="panelPrawy")
                 each n, i in odsluchane
                     p= "title: " + n.title + ", autor: "+ n.artist + ", url: " + n.uri
