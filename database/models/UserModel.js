@@ -20,6 +20,10 @@ const UserSchema = new Schema({
     permission: {
         type: String,
         default: 'normal'
+    },
+    lastVoted: {
+        type: Date,
+        default: null
     }
 });
 

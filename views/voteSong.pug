@@ -14,11 +14,17 @@ html(lang="pl")
         include ./partials/navBar
         section(id="main" class="container")
             div(id="playlista" class="panelLewy")
-                p  Utwór - Głosuj -
-                p  Utwór - Głosuj -
-                p  Utwór - Głosuj -
-                p  Utwór - Głosuj -
-                p  Utwór - Głosuj -
+                each n, i in fullSongs
+                    p
+                        | #{n.title} / #{n.artist} - 
+                        a(class="link" href=n.uri) Posłuchaj fragmentu 
+                        if User.canVote
+                            button(class="voteLink" href="/test2/"+n._id) Głosuj
+                //- p  Utwór - Głosuj -
+                //- p  Utwór - Głosuj -
+                //- p  Utwór - Głosuj -
+                //- p  Utwór - Głosuj -
+                //- p  Utwór - Głosuj -
             div(id="odsluchane" class="panelPrawy")
                 p - Wynik Głosowania -
                 p - Wynik Głosowania -
