@@ -105,20 +105,6 @@ exports.suggestionSong = (req, res) => {
     });
 };
 
-exports.voteSong = (req, res) => {
-    const User = {
-        logged: false,
-    };
-
-    if (req.session.passport) {
-        User.logged = req.session.passport.user;
-    }
-
-    res.render('voteSong', {
-        User
-    });
-};
-
 exports.logOut = (req, res) => {
     req.logout()
     res.redirect('/login');
