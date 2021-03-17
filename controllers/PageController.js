@@ -105,59 +105,6 @@ exports.suggestionSong = (req, res) => {
     });
 };
 
-exports.voteSong = (req, res) => {
-    const playlista = [
-        {
-            title: "jakiś tytuł",
-            artist: "jakiś autor",
-            trackId: "id utworu",
-            prewiewURL: "Url do 30 sekundowej próbki utworu",
-            uri: "link do strony internetowej spotify"
-        },
-        {
-            title: "jakiś tytuł",
-            artist: "jakiś autor",
-            trackId: "id utworu",
-            prewiewURL: "Url do 30 sekundowej próbki utworu",
-            uri: "link do strony internetowej spotify"
-        },
-        {
-            title: "jakiś tytuł",
-            artist: "jakiś autor",
-            trackId: "id utworu",
-            prewiewURL: "Url do 30 sekundowej próbki utworu",
-            uri: "link do strony internetowej spotify"
-        },
-        {
-            title: "jakiś tytuł",
-            artist: "jakiś autor",
-            trackId: "id utworu",
-            prewiewURL: "Url do 30 sekundowej próbki utworu",
-            uri: "link do strony internetowej spotify"
-        },
-        {
-            title: "jakiś tytuł",
-            artist: "jakiś autor",
-            trackId: "id utworu",
-            prewiewURL: "Url do 30 sekundowej próbki utworu",
-            uri: "link do strony internetowej spotify"
-        }
-    ];
-
-    const User = {
-        logged: false,
-    };
-
-    if (req.session.passport) {
-        User.logged = req.session.passport.user;
-    }
-
-    res.render('voteSong', {
-        User,
-        playlista
-    });
-};
-
 exports.logOut = (req, res) => {
     req.logout()
     res.redirect('/login');
@@ -165,11 +112,15 @@ exports.logOut = (req, res) => {
 
 // logowanie i rejestracja
 exports.login = async (req, res) => {
+    const errors = req.flash().error || [];
+
     const User = {
         logged: false,
     };
+
     await res.render('login', {
-        User
+        User,
+        errors
     });
 };
 
@@ -177,6 +128,7 @@ exports.register = (req, res) => {
     const User = {
         logged: false,
     };
+
     res.render('register', {
         User
     });
