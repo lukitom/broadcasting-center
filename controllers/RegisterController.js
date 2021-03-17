@@ -56,11 +56,13 @@ exports.registerSystem = async (req, res) => {
     // check required fields
     if( !login || !email || !password){
         errors.push({ msg: 'Proszę uzupełnić wszystkie pola'});
+        req.flash('error', 'Proszę uzupełnić wszystkie pola');
     }
 
     // check password length
     if(password.length < 8){
-        errors.push({ msg: 'Hasło powinno zawierać co najmniej 8 znaków'})
+        errors.push({ msg: 'Hasło powinno zawierać co najmniej 8 znaków'});
+        req.flash('error', 'Hasło powinno zawierać co najmniej 8 znaków');
     }
 
     // ! TODO: check if email domain: elektryk.edu.pl
@@ -76,6 +78,7 @@ exports.registerSystem = async (req, res) => {
                 if(user){
                     // user exists with this email
                     errors.splice(0, 0, {msg: 'Istnieje już użytkownik o podanym adresie email'});
+                    req.flash('error', 'Istnieje już użytkownik o podanym adresie email');
                     res.render('register', {
                         errors
                     });
@@ -83,7 +86,8 @@ exports.registerSystem = async (req, res) => {
                     // if user with this email doesn't exist -> check if login exist
                     UserModel.findOne({login: login}).then(async userLoginTest =>{
                         if(userLoginTest){
-                            errors.splice(0, 0, {msg: 'Istnieje już użytkownik o takim loginie.'});
+                            errors.splice(0, 0, {msg: 'Istnieje już użytkownik o takim loginie'});
+                            req.flash('error', 'Istnieje już użytkownik o takim loginie');
                             if(userLoginTest.login == login){
                                 res.render('register', {
                                 errors

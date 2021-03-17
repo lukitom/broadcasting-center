@@ -8,7 +8,8 @@ const cookieParser = require('cookie-parser');
 require('./database/ConnectionDatabaseMongodb.js');
 const session = require('express-session');
 const flash = require('connect-flash');
-const routes = require('./routes/index');
+const routesIndex = require('./routes/index');
+const spotifyApi = require('./routes/spotifyApi');
 const passport = require('passport');
 
 // utworzenie instancji express
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // deprecated
 ////app.set(bodyParser.json());
 //// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // obsługa ciasteczek
@@ -47,7 +49,7 @@ app.use(session({
     }
 }));
 
-// ! TODO: ustawić flasha do logowania i rejestracji (msg)
+// ! TODO: ustawić flasha do rejestracji - przy logowaniu jest i korzysta z fragmentów templatki .pug
 // wiadomości typu Flash usunięte i niepotrzebne -> chyba
 app.use(flash());
 
@@ -63,7 +65,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // przekierowanie obsługi ścieżek do innego pliku
-app.use('/', routes);
+app.use('/', routesIndex);
+app.use('/spotify', spotifyApi);
 
 // ! TODO: sprawdzić czy trzeba next
 app.use((req, res, next) => {

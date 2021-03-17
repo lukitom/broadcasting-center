@@ -15,8 +15,7 @@ html(lang="pl")
         section(id="main" class="container")
             div(id="logowanie" class="formDiv")
                 form(id="login" class="formularz" action="/login" method="POST")
-                    if error != ''
-                        p=error
+                    include ./partials/messages
                     label(for="loginLogIn") Login: 
                     input(class="textForm" id="loginLogIn" type="text" name="login" placeholder="Podaj swój login" required)
                     br
