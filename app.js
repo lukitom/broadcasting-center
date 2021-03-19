@@ -9,6 +9,7 @@ require('./database/ConnectionDatabaseMongodb.js');
 const session = require('express-session');
 const flash = require('connect-flash');
 const routesIndex = require('./routes/index');
+const api = require('./routes/api');
 const spotifyApi = require('./routes/spotifyApi');
 const passport = require('passport');
 
@@ -66,6 +67,7 @@ app.use(passport.session());
 
 // przekierowanie obsługi ścieżek do innego pliku
 app.use('/', routesIndex);
+app.use('/api', api);
 app.use('/spotify', spotifyApi);
 
 // ! TODO: sprawdzić czy trzeba next
