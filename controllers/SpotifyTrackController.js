@@ -115,6 +115,7 @@ exports.find = async (req, res) => {
     //#endregion
 
     const { titleSearch } = req.query;
+    // console.log(titleSearch);
 
     request.post(authOptions, function(err, response, body){
         if (!err && response.statusCode === 200){
