@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 function date(){
   var date = new Date(Date.now());
-  var myDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  var myDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
   // console.log(myDate);
   return myDate;
 }
