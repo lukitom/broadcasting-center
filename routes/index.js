@@ -17,12 +17,14 @@ router.get('/register', canRegisterLogin, PageConstroller.register);
 router.get('/suggestionSong', ensureAutheticated, PageConstroller.suggestionSong);
 router.get('/voteSong', ensureAutheticated, VoteSongController.voteSong);
 router.get('/logOut', PageConstroller.logOut);
+router.post('/test',(req, res) => {
+    res.status(200).json({});
+});
 
+ router.post('/login', canRegisterLogin, LoginConstroller.loginSystem);
+ router.post('/register', canRegisterLogin, RegisterController.registerSystem);
 
-router.post('/login', canRegisterLogin, LoginConstroller.loginSystem);
-router.post('/register', canRegisterLogin, RegisterController.registerSystem);
-
-router.post('/suggestionSong', ensureAutheticated, VoteSongController.addVoteSong);
-router.get('/voteSong/:id', ensureAutheticated, VoteSongController.vote)
+ router.post('/suggestionSong', ensureAutheticated, VoteSongController.addVoteSong);
+ router.get('/voteSong/:id', ensureAutheticated, VoteSongController.vote)
 
 module.exports = router;
