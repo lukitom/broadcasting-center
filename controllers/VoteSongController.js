@@ -72,12 +72,12 @@ exports.voteSong = async(req, res) => {
     if(err) console.log(err);
     if(result){
       // usersCanVote = result;
-      console.log(result);
+      // console.log(result);
       User.canVote = true;
     }
   });
 
-  console.log(User);
+  // console.log(User);
 
   res.render('voteSong', {
     User,
