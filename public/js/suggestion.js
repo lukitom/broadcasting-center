@@ -1,26 +1,27 @@
 $(function(){
-    //alert("cos tam bla bla");
-    var $przyciski = $('.przycisk');
-    $przyciski.each(function(){
-        $(this).click(function(){
-            console.log("Działa", $(this)[0].value);
-            let value = $(this)[0].value;
-            var body = {
-                id: 10
-            }
-            //console.log(body.id);
-        //     axios({
-        //         method: 'post',
-        //         url: '/test',
-        //         body: body.id
-        //     })
-        //         .then(res => console.log(res.data))
-        //         .catch(err => console.error(err));
-        // });
+    var wartosc = $('.textForm').value;
+        function wyswietl(data){
+            let div = $("#containerM");
+            // ! TODO: wstawić czyszczenie po ponownym wyszukiwaniu
+            // while (div.hasChildNodes) {  
+            //     div.removeChild(div.firstChild);
+            // }
+            data.forEach(function(element){
+                let p = document.createElement("p");
+                let a = document.createElement("a");
+                a.setAttribute("class", "link");
+                a.setAttribute("href", element.prewiewURL);
+                a.innerHTML = "Posłuchaj fragmentu";
+                p.innerHTML = element.title + " / " + element.artist + " - ";
+                p.append(a);
+                div.append(p);
+            });
+        }
+    $przycisk = $(".przycisk");
+    $przycisk.on("click", function(){
         axios
-            .post('/test', {}, {params: 2137})
-            .then(res => console.log(res.data))
+            .post('/test', {}, {params: wartosc})
+            .then(res => wyswietl(res.data))
             .catch(err => console.error(err));
-    });
     });
 });
