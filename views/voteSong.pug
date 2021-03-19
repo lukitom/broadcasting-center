@@ -19,7 +19,8 @@ html(lang="pl")
                         | #{n.title} / #{n.artist} - 
                         a(class="link" href=n.uri) Posłuchaj fragmentu 
                         if User.canVote
-                            button(class="voteLink" href="/test2/"+n._id) Głosuj
+                            a(class="voteLink" href="/voteSong/"+n._id)
+                                button Głosuj
                 //- p  Utwór - Głosuj -
                 //- p  Utwór - Głosuj -
                 //- p  Utwór - Głosuj -
