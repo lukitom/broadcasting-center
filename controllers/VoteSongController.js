@@ -1,14 +1,14 @@
+const moment = require('moment');
+
 const VoteSongModel = require('../database/models/VoteSongModel');
 const UserModel = require('../database/models/UserModel');
 const TrackModel = require('../database/models/TrackModel');
 
 exports.addVoteSong = async (req, res) => {
+  console.log(req.params.id)
 
   const newVoteSong = new VoteSongModel({
-    trackId: "7MAibcTli4IisCtbHKrGMh",
-    user: [
-      "60361365734b4d7ed874c8e2"
-    ]
+    trackId: req.params.id
   });
 
   newVoteSong.save()
@@ -21,26 +21,22 @@ exports.addVoteSong = async (req, res) => {
   res.redirect('/');
 }
 
-// ! TODO: pobieranie informacji z bazy o piosenkach z konkretnego dnia i przekazywanie ich
+// !!!!!!!! TODO: pobieranie informacji z bazy o piosenkach z konkretnego dnia i przekazywanie ich
+// ! Problemy z bazą danych (CHYBA)
 exports.voteSong = async(req, res) => {
-  const User = {};
-
-  if (req.session.passport) {
-    User.logged = req.session.passport.user;
-  }
+  const User = {
+    logged: req.session.passport.user
+  };
 
   // ! TODO: przefiltrować do konkretnej daty
   // filter głosowanych piosenek
   const filterSong = {
-    date: {
-      $lt: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
-      $gte: new Date(Date.now())
-    }
+    date: moment().add(1, 'day').format('L')
   }
 
   let songsToVoteToday = null;
   let fullSongs = [];
-  // uzyskanie tytułów głosowanych dzisiaj
+  // uzyskanie id głosowanych dzisiaj
   await VoteSongModel.find(filterSong, (err, result) => {
     if(err){
       console.log(err);
@@ -49,23 +45,28 @@ exports.voteSong = async(req, res) => {
   });
 
   // uzyskanie pełnych informacji o piosenkach głosowanych dzisiaj
-  for (let i = 0; i < songsToVoteToday.length; i++) {
-    await TrackModel.findOne({ _id: songsToVoteToday[i].trackId }, (err, song) => {
-      fullSongs.push(song);
-    })
+  if(songsToVoteToday !== null){
+    for (let i = 0; i < songsToVoteToday.length; i++) {
+      await TrackModel.findOne({ _id: songsToVoteToday[i].trackId }, (err, song) => {
+        fullSongs.push(song);
+      })
+    }
   }
 
-
   // !!! TODO: prawidłowe sprawdzanie czy użytkownik może głosować
+  // const filterUser = {
+  //   $or: [
+  //     { lastVoted: {
+  //       $lt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000)
+  //     }},
+  //     { lastVoted: null }
+  //   ],
+  //   _id: req.session.passport.user
+  // };
   const filterUser = {
-    $or: [
-      { lastVoted: {
-        $lt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000)
-      }},
-      { lastVoted: null }
-    ],
+    lastVoted: {$lt: moment().format('L')},
     _id: req.session.passport.user
-  };
+  }
 
   // let usersCanVote = [];
   await UserModel.find(filterUser, (err, result) => {
@@ -79,9 +80,11 @@ exports.voteSong = async(req, res) => {
 
   // console.log(User);
 
+  // !!! TODO: nie zawsze wyświetla piosenki, bo chyba nie oczekuje na .push
   res.render('voteSong', {
     User,
-    fullSongs
+    fullSongs,
+    resultVote: []
   });
 };
 

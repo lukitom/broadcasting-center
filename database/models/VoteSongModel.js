@@ -1,14 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-// const extendSchema = require('mongoose-extend-schema');
-// const TrackModel = require('./TrackModel');
-
-function date(){
-  var date = new Date(Date.now());
-  var myDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
-  // console.log(myDate);
-  return myDate;
-}
+const moment = require('moment');
 
 const VoteSongModel = new Schema({
   trackId: {
@@ -21,7 +13,7 @@ const VoteSongModel = new Schema({
   date: {
     type: Date,
     required: true,
-    default: () => date()
+    default: moment().add(1, 'day').format('L')
   }
 });
 

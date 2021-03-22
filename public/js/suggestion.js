@@ -5,10 +5,14 @@ $(function(){
         // while (div.hasChildNodes) {
         //     div.removeChild(div.firstChild);
         // }
+        $(".resutlSearch").remove()
+        $("#textForm")[0].value = '';
         data.forEach(function(element){
             let p = document.createElement("p");
             let a = document.createElement("a");
+            p.setAttribute("class", "resutlSearch");
             a.setAttribute("class", "link");
+            a.setAttribute("target", "_blank");
             a.setAttribute("href", element.prewiewURL);
             a.innerHTML = "Posłuchaj fragmentu";
             p.innerHTML = element.title + ' / ' + element.artist + " - ";

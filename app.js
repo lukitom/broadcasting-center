@@ -12,9 +12,11 @@ const routesIndex = require('./routes/index');
 const api = require('./routes/api');
 const spotifyApi = require('./routes/spotifyApi');
 const passport = require('passport');
+const cors = require('cors');
 
 // utworzenie instancji express
 const app = express();
+app.use(cors());
 
 // ustawienia modułu passport
 require('./middleware/passport')(passport);
