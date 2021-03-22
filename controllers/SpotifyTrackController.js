@@ -130,7 +130,6 @@ exports.find = async (req, res) => {
             };
 
             request.get(options, async function(err, response, body){
-                // TODO: obsłużyć wynik z zapytania
                 if (err){
                     res.status(500).json({ error: err.message });
                 }

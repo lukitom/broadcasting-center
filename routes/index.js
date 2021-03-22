@@ -6,7 +6,6 @@ const LoginConstroller = require('../controllers/LoginController');
 const RegisterController = require('../controllers/RegisterController');
 const VoteSongController = require('../controllers/VoteSongController');
 
-// const isAuthenticate = require('../middleware/authenticate').isAuthenticate;
 const { ensureAutheticated, canRegisterLogin } = require('../middleware/authenticate');
 
 // ogsługa konkretnych podstron
@@ -16,15 +15,15 @@ router.get('/login', canRegisterLogin, PageConstroller.login);
 router.get('/register', canRegisterLogin, PageConstroller.register);
 router.get('/suggestionSong', ensureAutheticated, PageConstroller.suggestionSong);
 router.get('/voteSong', ensureAutheticated, VoteSongController.voteSong);
-router.get('/logOut', PageConstroller.logOut);
-router.post('/test',(req, res) => {
-    res.status(200).json({});
-});
+router.get('/logOut', ensureAutheticated, PageConstroller.logOut);
 
- router.post('/login', canRegisterLogin, LoginConstroller.loginSystem);
- router.post('/register', canRegisterLogin, RegisterController.registerSystem);
+// Handling data from forms
+router.post('/login', canRegisterLogin, LoginConstroller.loginSystem);
+router.post('/register', canRegisterLogin, RegisterController.registerSystem);
 
- router.post('/suggestionSong', ensureAutheticated, VoteSongController.addVoteSong);
- router.get('/voteSong/:id', ensureAutheticated, VoteSongController.vote)
+// Creating new position to vote on the next day
+router.get('/suggestionSong/:id', ensureAutheticated, VoteSongController.addVoteSong);
+// Collect vote for specific song
+router.get('/voteSong/:id', ensureAutheticated, VoteSongController.vote)
 
 module.exports = router;
