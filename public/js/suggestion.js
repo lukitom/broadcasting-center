@@ -1,13 +1,22 @@
 $(function(){
     function wyswietl(data){
-        let div = $("#containerM");
         // ! TODO: wstawić czyszczenie po ponownym wyszukiwaniu
-        // while (div.hasChildNodes) {
-        //     div.removeChild(div.firstChild);
-        // }
+
+        if($("#containerM").children().length>=1){// coś się spierdoliło
+            $("#containerM").each( function(){
+                $(this).remove($(this).firstChild);
+            });
+            let divn = document.createElement("div");
+            divn.setAttribute("class", "containerMid");
+            divn.setAttribute("id", "containerM");
+            $("#main").append(divn);
+        }
+        let div = $("#containerM");
+        
         data.forEach(function(element){
             let p = document.createElement("p");
             let a = document.createElement("a");
+            p.setAttribute("class", "akapit");
             a.setAttribute("class", "link");
             a.setAttribute("href", element.prewiewURL);
             a.innerHTML = "Posłuchaj fragmentu";
@@ -16,9 +25,7 @@ $(function(){
             div.append(p);
         });
     }
-
-    var przycisk = $(".przycisk");
-    przycisk.on("click", function(){
+    $(".przycisk").on("click", function(){
         const wartosc = $('#textForm')[0].value;
         const path = `/api/find?titleSearch=${wartosc}`;
 
