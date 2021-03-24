@@ -1,8 +1,7 @@
 $(function(){
     function wyswietl(data){
-        // ! TODO: wstawić czyszczenie po ponownym wyszukiwaniu
 
-        if($("#containerM").children().length>=1){// coś się spierdoliło
+        if($("#containerM").children().length>=1){
             $("#containerM").each( function(){
                 $(this).remove($(this).firstChild);
             });
