@@ -24,7 +24,7 @@ $(function(){
     var przycisk = $(".przycisk");
     przycisk.on("click", function(){
         const wartosc = $('#textForm')[0].value;
-        const path = `/api/find?titleSearch=${wartosc}`;
+        const path = `/api/find?search=${wartosc}&type=track`;
 
         axios
             .get(path)
