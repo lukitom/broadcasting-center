@@ -114,7 +114,7 @@ exports.find = async (req, res) => {
     };
     //#endregion
 
-    const { titleSearch } = req.query;
+    const { search, type } = req.query;
     // console.log(titleSearch);
 
     request.post(authOptions, function(err, response, body){
@@ -122,45 +122,77 @@ exports.find = async (req, res) => {
             const token = body.access_token;
 
             var options = {
-                url: `https://api.spotify.com/v1/search?q=${titleSearch}&type=track&market=PL`,
+                url: `https://api.spotify.com/v1/search?q=${search}&type=${type}&market=PL`,
                 headers: {
                     'Authorization': 'Bearer ' + token
                 },
                 json: true
             };
 
-            request.get(options, async function(err, response, body){
-                if (err){
-                    res.status(500).json({ error: err.message });
-                }
-
-                if(body.tracks.items){
-                    var result = [];
-
-                    for(let i = 0; i < body.tracks.limit; i++){
-                        if (body.tracks.items[i].explicit) continue
-
-                        let temp_artist = [];
-                        body.tracks.items[i].artists.forEach(element => {
-                            temp_artist.push(element.name);
-                        });
-
-                        const newTrack = {
-                            title: body.tracks.items[i].name,
-                            artist: temp_artist,
-                            _id: body.tracks.items[i].id,
-                            prewiewURL: body.tracks.items[i].preview_url,
-                            uri: body.tracks.items[i].uri
-                        };
-
-                        result.push(newTrack);
+            if(type === 'track'){
+                request.get(options, async function(err, response, body){
+                    if (err){
+                        res.status(500).json({ error: err.message });
                     }
 
-                    res.status(200).json(result);
-                }else{
-                    res.status(404).json({result: null});
-                }
-            });
+                    if(body.tracks.items){
+                        var result = [];
+
+                        for(let i = 0; i < body.tracks.limit; i++){
+                            if (body.tracks.items[i].explicit) continue
+
+                            let temp_artist = [];
+                            body.tracks.items[i].artists.forEach(element => {
+                                temp_artist.push(element.name);
+                            });
+
+                            const newTrack = {
+                                title: body.tracks.items[i].name,
+                                artist: temp_artist,
+                                _id: body.tracks.items[i].id,
+                                prewiewURL: body.tracks.items[i].preview_url,
+                                uri: body.tracks.items[i].uri
+                            };
+
+                            result.push(newTrack);
+                        }
+
+                        res.status(200).json(result);
+                    }else{
+                        res.status(404).json({result: null});
+                    }
+                });
+
+            }
+
+            if(type === 'playlist'){
+                request.get(options, async function (err, response, body) {
+                    if (err) {
+                        res.status(500).json({ error: err.message });
+                    }
+
+                    // ! TODO: if czy jest cokolwiek
+                    if (body.playlists.items) {
+                        var result = [];
+
+                        // iterowanie po playlistach
+                        for (let i = 0; i < body.playlists.items.length; i++) {
+                            const newPlaylist = {
+                                name: body.playlists.items[i].name,
+                                id: body.playlists.items[i].id,
+                                tracks_href: body.playlists.items[i].tracks.href
+                            }
+
+                            result.push(newPlaylist);
+                        }
+
+                        res.status(200).json(result);
+                    } else {
+                        res.status(404).json({ result: null });
+                    }
+                });
+            }
+
         }else{
             res.status(500).json({ err: err.message });
         }
