@@ -1,3 +1,4 @@
+const { json } = require('body-parser');
 const request = require('request'); // "Request" library
 const TrackModel = require('../database/models/TrackModel');
 
@@ -138,7 +139,7 @@ exports.find = async (req, res) => {
                 if(body.tracks.items){
                     var result = [];
 
-                    for(let i = 0; i < body.tracks.limit; i++){
+                    for(let i = 0; i < body.tracks.items.length; i++){
                         if (body.tracks.items[i].explicit) continue
 
                         let temp_artist = [];
@@ -157,7 +158,13 @@ exports.find = async (req, res) => {
                         result.push(newTrack);
                     }
 
-                    res.status(200).json(result);
+                    if(body.tracks.items.length == 0){
+                        res.status(200).json({result: null});
+                    }
+                    else{
+                        res.status(200).json({"result": result});
+                    }
+
                 }else{
                     res.status(404).json({result: null});
                 }
