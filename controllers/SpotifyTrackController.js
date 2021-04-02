@@ -91,7 +91,7 @@ exports.playlist = (req, res) => {
             //     })
             // #endregion
 
-            res.redirect('/');
+            res.redirect('/adminPanel');
             });
         }
     });
