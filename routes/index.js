@@ -16,6 +16,8 @@ router.get('/register', canRegisterLogin, PageConstroller.register);
 router.get('/suggestionSong', ensureAutheticated, PageConstroller.suggestionSong);
 router.get('/voteSong', ensureAutheticated, VoteSongController.voteSong);
 router.get('/logOut', ensureAutheticated, PageConstroller.logOut);
+router.get('/adminPanel', PageConstroller.adminPanel);
+
 
 // Handling data from forms
 router.post('/login', canRegisterLogin, LoginConstroller.loginSystem);

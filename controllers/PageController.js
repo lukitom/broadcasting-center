@@ -81,6 +81,7 @@ exports.index = async (req, res) => {
     // przypisanie do obiektu User czy użytkownik jest zalogowany
     if(req.session.passport){
         User.logged = req.session.passport.user;
+        User.admin=true;
     }
 
 // ! TODO: dokończyć przesyłanie danych do templatki z passport
@@ -98,6 +99,7 @@ exports.suggestionSong = (req, res) => {
 
     if (req.session.passport) {
         User.logged = req.session.passport.user;
+        User.admin=true;
     }
 
     res.render('suggestionSong', {
@@ -133,3 +135,17 @@ exports.register = (req, res) => {
         User
     });
 };
+
+exports.adminPanel =(req,res) =>{
+    const User = {
+        logged: false
+    };
+
+    if (req.session.passport) {
+        User.logged = req.session.passport.user;
+        User.admin=true;//! TODO: sprawdzić czy admin
+    }
+    res.render('adminPanel',{
+        User
+    });
+}
