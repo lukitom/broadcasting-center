@@ -1,7 +1,7 @@
 nav(class="navLogin" id="menu2")
     if User !== 'undefined' && User.logged
         if User.admin == true
-            a(class="linkSubpage" href="/adminPanel") Admin Panel
+            a(class="linkLogin" href="/adminPanel") Admin Panel
         a(class= "linkLogin"  href = "/logOut") Wyloguj się
     else
         a(class= "linkLogin" id = "linkLogin" href = "/login") Zaloguj się
