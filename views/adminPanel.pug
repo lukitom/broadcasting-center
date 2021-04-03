@@ -7,6 +7,10 @@ html(lang="pl")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet" type="text/css" href="css/main.css")
         link(rel="stylesheet" type="text/css" href="css/css-index.css")
+        link(rel="stylesheet" type="text/css" href="css/css-admin.css")
+        script(src="/js/jquery.js")
+        script(src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js")
+        script(src="/js/adminPanel.js")
         title Strona główna Broadcasting Center
     body
         section(id="naglowek" class="headerSection")
@@ -18,7 +22,8 @@ html(lang="pl")
                 br
                 a(class="link"  href="/spotify/playlist/37i9dQZEVXbN6itCcaL3Tt") Top 50 Polska
                 br
-                a(class="link"  href="/spotify/playlist/37i9dQZF1DXcRXFNfZr7Tp") just hits
+                //- dwa niżej nie działają (Just hits oraz Chill Hits)
+                a(class="link"  href="/spotify/playlist/37i9dQZF1DXcRXFNfZr7Tp") Just hits
                 br
                 a(class="link"  href="/spotify/playlist/37i9dQZF1DX4WYpdgoIcn6") Chill Hits
                 br
@@ -33,6 +38,13 @@ html(lang="pl")
                 p ( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)
                     button(class="przycisk" id="akceptuj" type="submit" name="akceptuj") Usuń
                 button(class="przycisk" id="akceptuj" type="submit" name="akceptuj") Zaakceptuj
+
+            div(class="searching" id="searchPlaylist")
+                div(class="containerMid")
+                    input(class="textForm" id="textForm" name="wyszukaj" type="text")
+                    br
+                    button(class="przycisk" id="search") Wyszukaj
+            div(class="containerMid" id="containerM")
         section(id="stopka" class="footerSection")
             footer(id="footer" class="footerTag")
                 p ( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)

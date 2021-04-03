@@ -36,13 +36,16 @@ $(function () {
             div.append(P);
         }
     }
+
     $(".przycisk").on("click", function () {
         const wartosc = $('#textForm')[0].value;
+        if (wartosc.length == 0) return null;
         const path = `/api/find?search=${wartosc}&type=track`;
 
         axios
             .get(path)
             .then(res => wyswietl(res.data, res.status))
+            .then($('#textForm')[0].value = '')
             .catch(err => {
                 let div = $("#containerM");
                 let P = document.createElement("p");

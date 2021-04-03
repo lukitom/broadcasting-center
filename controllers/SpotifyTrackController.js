@@ -162,7 +162,7 @@ exports.find = async (req, res) => {
                         res.status(200).json({result: null});
                     }
                     else{
-                        res.status(200).json({"result": result});
+                        res.status(200).json({ result });
                     }
 
                 }else{
@@ -192,7 +192,7 @@ exports.find = async (req, res) => {
                             result.push(newPlaylist);
                         }
 
-                        res.status(200).json(result);
+                        res.status(200).json({ result });
                     } else {
                         res.status(404).json({ result: null });
                     }
