@@ -180,7 +180,6 @@ exports.find = async (req, res) => {
                             const newPlaylist = {
                                 name: body.playlists.items[i].name,
                                 id: body.playlists.items[i].id,
-                                tracks_href: body.playlists.items[i].tracks.href
                             }
 
                             result.push(newPlaylist);
