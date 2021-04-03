@@ -1,3 +1,4 @@
+const { json } = require('body-parser');
 const request = require('request'); // "Request" library
 const TrackModel = require('../database/models/TrackModel');
 
@@ -131,41 +132,47 @@ exports.find = async (req, res) => {
 
             if(type === 'track'){
                 request.get(options, async function(err, response, body){
-                    if (err){
-                        res.status(500).json({ error: err.message });
+                if (err){
+                    res.status(500).json({ error: err.message });
+                }
+
+                if(body.tracks.items){
+                    var result = [];
+
+                    for(let i = 0; i < body.tracks.items.length; i++){
+                        if (body.tracks.items[i].explicit) continue
+
+                        let temp_artist = [];
+                        body.tracks.items[i].artists.forEach(element => {
+                            temp_artist.push(element.name);
+                        });
+
+                        const newTrack = {
+                            title: body.tracks.items[i].name,
+                            artist: temp_artist,
+                            _id: body.tracks.items[i].id,
+                            prewiewURL: body.tracks.items[i].preview_url,
+                            uri: body.tracks.items[i].uri
+                        };
+
+                        result.push(newTrack);
                     }
 
-                    if(body.tracks.items){
-                        var result = [];
-
-                        for(let i = 0; i < body.tracks.limit; i++){
-                            if (body.tracks.items[i].explicit) continue
-
-                            let temp_artist = [];
-                            body.tracks.items[i].artists.forEach(element => {
-                                temp_artist.push(element.name);
-                            });
-
-                            const newTrack = {
-                                title: body.tracks.items[i].name,
-                                artist: temp_artist,
-                                _id: body.tracks.items[i].id,
-                                prewiewURL: body.tracks.items[i].preview_url,
-                                uri: body.tracks.items[i].uri
-                            };
-
-                            result.push(newTrack);
-                        }
-
-                        res.status(200).json(result);
-                    }else{
-                        res.status(404).json({result: null});
+                    if(body.tracks.items.length == 0){
+                        res.status(200).json({result: null});
                     }
-                });
+                    else{
+                        res.status(200).json({"result": result});
+                    }
+
+                }else{
+                    res.status(404).json({result: null});
+                }
+            });
 
             }
 
-            if(type === 'playlist'){
+            if (type === 'playlist') {
                 request.get(options, async function (err, response, body) {
                     if (err) {
                         res.status(500).json({ error: err.message });
@@ -192,7 +199,7 @@ exports.find = async (req, res) => {
                 });
             }
 
-        }else{
+        } else {
             res.status(500).json({ err: err.message });
         }
     });
