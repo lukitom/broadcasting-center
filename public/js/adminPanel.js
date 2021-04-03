@@ -4,9 +4,6 @@ $(function () {
     if(wartosc.length == 0) return null;
     const path = `/api/find?search=${wartosc}&type=playlist`;
 
-    console.log(`Wartość: ${wartosc}`);
-    console.log(`Ścieżka: ${path}`);
-
     axios
       .get(path)
       .then(res => wyswietl(res.data, res.status))
@@ -29,9 +26,7 @@ function wyswietl(data, status) {
       $(this).remove($(this).firstChild);
     });
 
-    let divn = document.createElement("div");
-    divn.setAttribute("id", "containerMid");
-    divn.setAttribute("id", "containerM");
+    let divn = `<div class="containerMid" id="containerM"></div>`;
     $("#searchPlaylist").append(divn);
   }
   //#endregion
@@ -40,31 +35,12 @@ function wyswietl(data, status) {
 
   if (data.result != null) {
     data.result.forEach(function (element) {
-      console.log(element)
-      // let p = document.createElement("p");
-      // let btn = document.createElement("button");
-      // p.setAttribute("class", "akapit");
-      // p.innerHTML = element.title + ' / ' + element.artist;
-      // if (element.prewiewURL != null) {
-      //   let a = document.createElement("a");
-      //   a.setAttribute("class", "link");
-      //   a.setAttribute("href", element.prewiewURL);
-      //   a.innerHTML = "Posłuchaj fragmentu";
-      //   p.innerHTML += " - ";
-      //   p.append(a);
-      // }
-      // div.append(p);
-
-
       var p = `<p><a href="/spotify/playlist/${element.id}">${element.name}<a/></p>`;
-
       $('#containerM').append(p);
     });
   }
   else {
-    let P = document.createElement("p");
-    P.setAttribute("class", "akapit");
-    P.innerHTML = "Brak playlist";
-    div.append(P);
+    let p = `<p class="akapit">Brak playlist</p>`;
+    div.append(p);
   }
 }
