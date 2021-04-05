@@ -7,7 +7,7 @@ const RegisterController = require('../controllers/RegisterController');
 const VoteSongController = require('../controllers/VoteSongController');
 const SuggestionSongController = require('../controllers/SuggestionSongController.js');
 
-const { ensureAuthenticated, canRegisterLogin } = require('../middleware/authenticate');
+const { ensureAuthenticated, canRegisterLogin, isAdmin } = require('../middleware/authenticate');
 
 // ogsługa konkretnych podstron
 router.get('/', PageConstroller.index);
@@ -17,7 +17,7 @@ router.get('/register', canRegisterLogin, PageConstroller.register);
 router.get('/suggestionSong', ensureAuthenticated, PageConstroller.suggestionSong);
 // router.get('/voteSong', ensureAuthenticated, VoteSongController.voteSong);
 router.get('/logOut', ensureAuthenticated, PageConstroller.logOut);
-router.get('/adminPanel', ensureAuthenticated, PageConstroller.adminPanel);
+router.get('/adminPanel', ensureAuthenticated, isAdmin, PageConstroller.adminPanel);
 
 
 // Handling data from forms

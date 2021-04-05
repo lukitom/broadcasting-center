@@ -1,4 +1,4 @@
-exports.index = async (req, res) => {
+const index = async (req, res) => {
     const playlista = [
         {
             title: "jakiś tytuł",
@@ -80,8 +80,8 @@ exports.index = async (req, res) => {
     }
     // przypisanie do obiektu User czy użytkownik jest zalogowany
     if(req.session.passport){
-        User.logged = req.session.passport.user;
-        User.admin=true;
+        User.logged = req.session.passport.user._id;
+        User.admin = (req.session.passport.user.permission == 'admin') ? true : false;
     }
 
 // ! TODO: dokończyć przesyłanie danych do templatki z passport
@@ -92,14 +92,14 @@ exports.index = async (req, res) => {
     });
 };
 
-exports.suggestionSong = (req, res) => {
+const suggestionSong = (req, res) => {
     const User = {
         logged: false,
     };
 
     if (req.session.passport) {
-        User.logged = req.session.passport.user;
-        User.admin=true;
+        User.logged = req.session.passport.user._id;
+        User.admin = (req.session.passport.user.permission == 'admin') ? true : false;
     }
 
     res.render('suggestionSong', {
@@ -107,13 +107,13 @@ exports.suggestionSong = (req, res) => {
     });
 };
 
-exports.logOut = (req, res) => {
+const logOut = (req, res) => {
     req.logout()
     res.redirect('/login');
 };
 
 // logowanie i rejestracja
-exports.login = async (req, res) => {
+const login = async (req, res) => {
     const errors = req.flash().error || [];
 
     const User = {
@@ -126,7 +126,7 @@ exports.login = async (req, res) => {
     });
 };
 
-exports.register = (req, res) => {
+const register = (req, res) => {
     const User = {
         logged: false,
     };
@@ -136,16 +136,25 @@ exports.register = (req, res) => {
     });
 };
 
-exports.adminPanel =(req,res) =>{
+const adminPanel =(req,res) =>{
     const User = {
         logged: false
     };
 
     if (req.session.passport) {
-        User.logged = req.session.passport.user;
-        User.admin=true;//! TODO: sprawdzić czy admin
+        User.logged = req.session.passport.user._id;
+        User.admin = (req.session.passport.user.permission == 'admin') ? true : false;
     }
     res.render('adminPanel',{
         User
     });
+}
+
+module.exports = {
+    index,
+    suggestionSong,
+    logOut,
+    login,
+    register,
+    adminPanel
 }

@@ -28,11 +28,11 @@ module.exports = function (passport) {
     );
 
     passport.serializeUser((user, done) => {
-        done(null, user.id);
+        done(null, user);
     });
 
-    passport.deserializeUser((id, done) => {
-        UserModel.findById(id, (err, user) => {
+    passport.deserializeUser((user, done) => {
+        UserModel.findById(user._id, (err, user) => {
             done(err, user);
         })
     });
