@@ -3,8 +3,6 @@ require('dotenv').config();
 const path = require('path');
 // const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-//// const mysql = require('mysql');
-//// const dbConnectedMysql = require('./database/ConnectionDatabaseMysql.js');
 require('./database/ConnectionDatabaseMongodb.js');
 const session = require('express-session');
 const flash = require('connect-flash');

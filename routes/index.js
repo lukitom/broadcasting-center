@@ -5,6 +5,7 @@ const PageConstroller = require('../controllers/PageController');
 const LoginConstroller = require('../controllers/LoginController');
 const RegisterController = require('../controllers/RegisterController');
 const VoteSongController = require('../controllers/VoteSongController');
+const SuggestionSongController = require('../controllers/SuggestionSongController.js');
 
 const { ensureAuthenticated, canRegisterLogin } = require('../middleware/authenticate');
 
@@ -28,7 +29,7 @@ router.post('/register', canRegisterLogin, RegisterController.registerSystem);
 
 // Adding new song to the next day propositions
 // ! TODO: dokończyć przekierowywanie i obsługę ścieżki
-// router.get('/suggestionSong/:id', ensureAuthenticated, )
+router.get('/suggestionSong/:id', ensureAuthenticated, SuggestionSongController.addSong);
 
 // Collect vote for specific song
 router.get('/voteSong/:id', ensureAuthenticated, VoteSongController.vote)
