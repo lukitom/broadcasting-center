@@ -78,6 +78,7 @@ const index = async (req, res) => {
     const User = {
         logged: false
     }
+    console.log(req.session);
     // przypisanie do obiektu User czy użytkownik jest zalogowany
     if(req.session.passport && req.session.passport.user){
         User.logged = req.session.passport.user._id;
