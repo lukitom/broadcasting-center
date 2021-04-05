@@ -3,10 +3,6 @@ const PlayModel = require('../database/models/PlayModel');
 
 // Adding new song to the next day
 const addSong = async (req, res) => {
-  // TODO: utworzyć dodawanie nowych piosenek na następny dzień z przycisku przy wyszukiwaniu
-
-  // console.log(`Adding new song: ${req.params.id}`);
-
   var resultOurDatabase = null;
 
   // Checking database, should find song (if it hadn't existed it was created)
@@ -17,8 +13,6 @@ const addSong = async (req, res) => {
         resultOurDatabase = track;
       }
   });
-
-  console.log(resultOurDatabase);
 
   // Add to the next day;
   if (resultOurDatabase != null) {
@@ -33,10 +27,9 @@ const addSong = async (req, res) => {
       uri: resultOurDatabase.uri
     });
     song.save()
-      .then(() => console.log('Dodano do poczekalni na następny dzień'))
+      .then(() => {/*console.log('Dodano do poczekalni na następny dzień')*/})
       .catch(err => console.log(err));
   }
-
 
   res.redirect('/');
 }
