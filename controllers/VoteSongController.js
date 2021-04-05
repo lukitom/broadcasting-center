@@ -25,7 +25,8 @@ exports.addVoteSong = async (req, res) => {
 // ! Problemy z bazą danych (CHYBA)
 exports.voteSong = async(req, res) => {
   const User = {
-    logged: req.session.passport.user
+    logged: req.session.passport.user._id,
+    admin: (req.session.passport.permission === 'admin') ? true : false
   };
 
   // ! TODO: przefiltrować do konkretnej daty
@@ -108,11 +109,11 @@ exports.vote = async (req, res) => {
   });
 
   let users = resultSong.user
-  users.push(req.session.passport.user);
+  users.push(req.session.passport.user._id);
   resultSong.user = users;
 
   await VoteSongModel.findOneAndUpdate(filterSong, resultSong);
-  await UserModel.findOneAndUpdate({ _id: req.session.passport.user }, { lastVoted: new Date(Date.now())});
+  await UserModel.findOneAndUpdate({ _id: req.session.passport.user._id }, { lastVoted: new Date(Date.now())});
 
   res.redirect('/voteSong');
 }
