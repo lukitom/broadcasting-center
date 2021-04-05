@@ -38,8 +38,10 @@ function wyswietl(data, status) {
       if (element.prewiewURL != null) {
         a = ` - <a href="${element.prewiewURL}" class="link">Posłuchaj fragmentu</a>`
       }
-      let p = `<p class="akapit">${element.title} / ${element.artist}${a}</p>`;
 
+      let btn = `<a href="/spotify/addSong/${element._id}"><button>Dodaj propozycję</button></a>`;
+
+      let p = `<p class="akapit">${element.title} / ${element.artist}${a} ${btn}</p>`;
       div.append(p);
     });
   }

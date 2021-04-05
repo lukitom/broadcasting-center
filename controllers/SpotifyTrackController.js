@@ -1,8 +1,8 @@
-const { json } = require('body-parser');
 const request = require('request'); // "Request" library
 const TrackModel = require('../database/models/TrackModel');
 
-exports.playlist = (req, res) => {
+// Adding new Song not explicit to database from playlist id
+const playlist = (req, res) => {
     //#region uzyskanie tokena do zapytanań do api spotify
     var client_id = process.env.CLIENT_ID; // Your client id
     var client_secret = process.env.CLIENT_SECRET; // Your client secret
@@ -97,7 +97,8 @@ exports.playlist = (req, res) => {
     });
 };
 
-exports.find = async (req, res) => {
+// Searching track by title or playlist by playlist name
+const find = async (req, res) => {
     //#region uzyskanie tokena do zapytanań do api spotify
     var client_id = process.env.CLIENT_ID; // Your client id
     var client_secret = process.env.CLIENT_SECRET; // Your client secret
@@ -204,3 +205,76 @@ exports.find = async (req, res) => {
         }
     });
 };
+
+// Adding / Update song in our database
+const addSong = (req, res) => {
+    //#region uzyskanie tokena do zapytanań do api spotify
+    var client_id = process.env.CLIENT_ID; // Your client id
+    var client_secret = process.env.CLIENT_SECRET; // Your client secret
+
+    // your application requests authorization
+    var authOptions = {
+        url: 'https://accounts.spotify.com/api/token',
+        headers: {
+            'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
+        },
+        form: {
+            grant_type: 'client_credentials'
+        },
+        json: true
+    };
+    //#endregion
+
+    const SongId = req.params.id;
+    request.post(authOptions, function (err, response, body) {
+        if (!err && response.statusCode === 200) {
+            const token = body.access_token;
+
+            var options = {
+                url: `https://api.spotify.com/v1/tracks/${SongId}`,
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                },
+                json: true
+            };
+
+            request.get(options, async function (err, response, body) {
+                if(err) return res.status(500).json({ err: err.message });
+
+                if(body.explicit) return res.status(403).json({ err: "Song is explicit" });
+
+                let temp_artist = [];
+                body.artists.forEach(element => {
+                    temp_artist.push(element.name);
+                })
+                const song = new TrackModel({
+                    title: body.name,
+                    artist: temp_artist,
+                    _id: body.id,
+                    prewiewURL: body.preview_url,
+                    uri: body.uri
+                });
+
+                //#region aktualizowanie jeśli znajdzie, a jeśli nie ma to dodaje nowy dokument
+                await TrackModel.findOneAndUpdate({ _id: song._id }, song, { upsert: true })
+                    .then(() => {
+                        console.log('Updatetowano bazę');
+                        res.redirect(`/suggestionSong/${SongId}`);
+                    })
+                    .catch(err => {
+                        console.log(err.message);
+                    });
+                    // #endregion
+            });
+        } else {
+            res.status(500).json({ err: err.message });
+        }
+
+    });
+}
+
+module.exports = {
+    playlist,
+    find,
+    addSong
+}
