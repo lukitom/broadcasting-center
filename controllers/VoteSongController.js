@@ -1,3 +1,5 @@
+/** !!!!! Niestety trzeba poprawić req.session.passport.user (zostały dodane wszystie elementy do tego z bazy)  */
+
 const moment = require('moment');
 
 const VoteSongModel = require('../database/models/VoteSongModel');
@@ -66,7 +68,7 @@ exports.voteSong = async(req, res) => {
   // };
   const filterUser = {
     lastVoted: {$lt: moment().format('L')},
-    _id: req.session.passport.user
+    _id: req.session.passport.user._id
   }
 
   // let usersCanVote = [];

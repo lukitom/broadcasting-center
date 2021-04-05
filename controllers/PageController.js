@@ -79,7 +79,7 @@ const index = async (req, res) => {
         logged: false
     }
     // przypisanie do obiektu User czy użytkownik jest zalogowany
-    if(req.session.passport){
+    if(req.session.passport && req.session.passport.user){
         User.logged = req.session.passport.user._id;
         User.admin = (req.session.passport.user.permission == 'admin') ? true : false;
     }
@@ -97,7 +97,7 @@ const suggestionSong = (req, res) => {
         logged: false,
     };
 
-    if (req.session.passport) {
+    if (req.session.passport.user) {
         User.logged = req.session.passport.user._id;
         User.admin = (req.session.passport.user.permission == 'admin') ? true : false;
     }
@@ -141,7 +141,7 @@ const adminPanel =(req,res) =>{
         logged: false
     };
 
-    if (req.session.passport) {
+    if (req.session.passport.user) {
         User.logged = req.session.passport.user._id;
         User.admin = (req.session.passport.user.permission == 'admin') ? true : false;
     }
