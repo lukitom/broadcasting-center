@@ -258,7 +258,7 @@ const addSong = (req, res) => {
                 //#region aktualizowanie jeśli znajdzie, a jeśli nie ma to dodaje nowy dokument
                 await TrackModel.findOneAndUpdate({ _id: song._id }, song, { upsert: true })
                     .then(() => {
-                        console.log('Updatetowano bazę');
+                        // console.log('Updatetowano bazę');
                         res.redirect(`/suggestionSong/${SongId}`);
                     })
                     .catch(err => {

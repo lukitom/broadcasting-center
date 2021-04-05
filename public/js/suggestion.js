@@ -41,7 +41,13 @@ function wyswietl(data, status) {
 
       let btn = `<a href="/spotify/addSong/${element._id}"><button>Dodaj propozycję</button></a>`;
 
-      let p = `<p class="akapit">${element.title} / ${element.artist}${a} ${btn}</p>`;
+      let artysci = '';
+      element.artist.forEach(artysta => {
+        artysci += `${artysta}, `
+      });
+
+      artysci = artysci.substr(0, artysci.length - 2);
+      let p = `<p class="akapit">${element.title} / ${artysci}${a} ${btn}</p>`;
       div.append(p);
     });
   }
