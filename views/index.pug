@@ -14,13 +14,25 @@ html(lang="pl")
         include ./partials/navBar
         section(id="main" class="container")
             div(id="playlista" class="panelLewy")
+                p Piosenki na dzisiaj i później
+                hr
                 each n, i in playlista
                     p
                         | #{n.title} / #{n.artist} - 
-                        a(class="link" href=n.uri) Posłuchaj fragmentu
+                        if n.prewiewURL != null
+                            a(class="link" href=n.prewiewURL) Posłuchaj fragmentu
+                        else
+                            | brak podglądu
             div(id="odsluchane" class="panelPrawy")
+                p Piosenki z poprzednich dni
+                hr
                 each n, i in odsluchane
-                    p= "title: " + n.title + ", autor: "+ n.artist + ", url: " + n.uri
+                    p
+                        | #{n.title} / #{n.artist} - 
+                        if n.prewiewURL != null
+                            a(class="link" href=n.prewiewURL) Posłuchaj fragmentu
+                        else
+                            | brak podglądu
         section(id="stopka" class="footerSection")
             footer(id="footer" class="footerTag")
                 p ( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)

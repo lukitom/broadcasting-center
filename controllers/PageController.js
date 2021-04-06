@@ -1,79 +1,37 @@
-const index = async (req, res) => {
-    const playlista = [
-        {
-            title: "jakiś tytuł",
-            artist: "jakiś autor",
-            trackId: "id utworu",
-            prewiewURL: "Url do 30 sekundowej próbki utworu",
-            uri: "link do strony internetowej spotify"
-        },
-        {
-            title: "jakiś tytuł",
-            artist: "jakiś autor",
-            trackId: "id utworu",
-            prewiewURL: "Url do 30 sekundowej próbki utworu",
-            uri: "link do strony internetowej spotify"
-        },
-        {
-            title: "jakiś tytuł",
-            artist: "jakiś autor",
-            trackId: "id utworu",
-            prewiewURL: "Url do 30 sekundowej próbki utworu",
-            uri: "link do strony internetowej spotify"
-        },
-        {
-            title: "jakiś tytuł",
-            artist: "jakiś autor",
-            trackId: "id utworu",
-            prewiewURL: "Url do 30 sekundowej próbki utworu",
-            uri: "link do strony internetowej spotify"
-        },
-        {
-            title: "jakiś tytuł",
-            artist: "jakiś autor",
-            trackId: "id utworu",
-            prewiewURL: "Url do 30 sekundowej próbki utworu",
-            uri: "link do strony internetowej spotify"
-        }
-    ];
+const PlayModel = require('../database/models/PlayModel');
+const moment = require('moment');
 
-    const odsluchane = [
-        {
-            title: "jakiś tytuł",
-            artist: "jakiś autor",
-            trackId: "id utworu",
-            prewiewURL: "Url do 30 sekundowej próbki utworu",
-            uri: "link do strony internetowej spotify"
-        },
-        {
-            title: "jakiś tytuł",
-            artist: "jakiś autor",
-            trackId: "id utworu",
-            prewiewURL: "Url do 30 sekundowej próbki utworu",
-            uri: "link do strony internetowej spotify"
-        },
-        {
-            title: "jakiś tytuł",
-            artist: "jakiś autor",
-            trackId: "id utworu",
-            prewiewURL: "Url do 30 sekundowej próbki utworu",
-            uri: "link do strony internetowej spotify"
-        },
-        {
-            title: "jakiś tytuł",
-            artist: "jakiś autor",
-            trackId: "id utworu",
-            prewiewURL: "Url do 30 sekundowej próbki utworu",
-            uri: "link do strony internetowej spotify"
-        },
-        {
-            title: "jakiś tytuł",
-            artist: "jakiś autor",
-            trackId: "id utworu",
-            prewiewURL: "Url do 30 sekundowej próbki utworu",
-            uri: "link do strony internetowej spotify"
+const index = async (req, res) => {
+    // ! TODO: zrobić pobieranie piosenek z bazy na konkretny dzień
+    const filters = {
+        date: {
+            $gte: moment().subtract(5, 'days').format('L'),
+            $lt: moment().add(2, 'days').format('L')
         }
-    ];
+    }
+
+    var songs = [];
+
+    await PlayModel.find(filters, null, {sort: { date: 1}}, (err, result) => {
+        if(err) console.error(err);
+
+        if(result){
+            songs = result;
+        }
+    });
+
+    var playlista = [];
+    var odsluchane = [];
+    await songs.forEach((song) => {
+        let date1 = new Date(song.date);
+        let date2 = new Date(moment().format('L'));
+
+        if(date1 >= date2){
+            playlista.push(song);
+        }else{
+            odsluchane.push(song);
+        }
+    });
 
     const User = {
         logged: false
@@ -84,7 +42,6 @@ const index = async (req, res) => {
         User.admin = (req.session.passport.user.permission == 'admin') ? true : false;
     }
 
-// ! TODO: dokończyć przesyłanie danych do templatki z passport
     await res.render('index',{
         playlista,
         User,
