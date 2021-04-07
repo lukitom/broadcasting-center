@@ -6,5 +6,6 @@ const ensureAuthenticated = require('../middleware/authenticate').ensureAuthenti
 
 router.get('/playlist/:id', ensureAuthenticated, SpotifyTrackController.playlist);
 router.get('/addSong/:id', ensureAuthenticated, SpotifyTrackController.addSong);
+router.get('/test', SpotifyTrackController.test);
 
 module.exports = router;

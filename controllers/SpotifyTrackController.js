@@ -1,5 +1,6 @@
 const request = require('request'); // "Request" library
 const TrackModel = require('../database/models/TrackModel');
+const SpotifyAuthentication = require('../middleware/spotifyAuthentication');
 
 // Adding new Song not explicit to database from playlist id
 const playlist = (req, res) => {
@@ -271,10 +272,17 @@ const addSong = (req, res) => {
         }
 
     });
+};
+
+const test = async(req, res) => {
+    await SpotifyAuthentication.login();
+    var token = req.session;
+    console.log(token);
 }
 
 module.exports = {
     playlist,
     find,
-    addSong
+    addSong,
+    test
 }
