@@ -22,7 +22,7 @@ const addSong = async (req, res) => {
     const song = new PlayModel({
       title: resultOurDatabase.title,
       artist: resultOurDatabase.artist,
-      _id: resultOurDatabase._id,
+      id: resultOurDatabase._id,
       prewiewURL: resultOurDatabase.prewiewURL,
       uri: resultOurDatabase.uri
     });

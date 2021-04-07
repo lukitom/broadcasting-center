@@ -2,6 +2,15 @@ const PlayModel = require('../database/models/PlayModel');
 const moment = require('moment');
 
 const index = async (req, res) => {
+    const User = {
+        logged: false
+    }
+    // przypisanie do obiektu User czy użytkownik jest zalogowany
+    if (req.session.passport && req.session.passport.user) {
+        User.logged = req.session.passport.user._id;
+        User.admin = (req.session.passport.user.permission == 'admin') ? true : false;
+    }
+
     // ! TODO: zrobić pobieranie piosenek z bazy na konkretny dzień
     const filters = {
         date: {
@@ -10,42 +19,28 @@ const index = async (req, res) => {
         }
     }
 
-    var songs = [];
-
-    await PlayModel.find(filters, null, {sort: { date: 1}}, (err, result) => {
-        if(err) console.error(err);
-
-        if(result){
-            songs = result;
-        }
-    });
-
     var playlista = [];
     var odsluchane = [];
-    await songs.forEach((song) => {
-        let date1 = new Date(song.date);
-        let date2 = new Date(moment().format('L'));
 
-        if(date1 >= date2){
-            playlista.push(song);
-        }else{
-            odsluchane.push(song);
-        }
-    });
+    await PlayModel.find(filters, null, {sort: { date: 1}}, async (err, result) => {
+        if(err) console.error(err);
 
-    const User = {
-        logged: false
-    }
-    // przypisanie do obiektu User czy użytkownik jest zalogowany
-    if(req.session.passport && req.session.passport.user){
-        User.logged = req.session.passport.user._id;
-        User.admin = (req.session.passport.user.permission == 'admin') ? true : false;
-    }
+        await result.forEach(async (song) => {
+            let date1 = new Date(song.date);
+            let date2 = new Date(moment().format('L'));
 
-    await res.render('index',{
-        playlista,
-        User,
-        odsluchane
+            if (date1 >= date2) {
+                await playlista.push(song);
+            } else {
+                await odsluchane.push(song);
+            }
+        });
+
+        await res.render('index', {
+            playlista,
+            User,
+            odsluchane
+        });
     });
 };
 

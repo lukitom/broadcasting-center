@@ -11,9 +11,8 @@ const PlayModel = new Schema({
   artist: {
     type: Array
   },
-  _id: {
+  id: {
     type: String,
-    unique: true,
     required: true
   },
   prewiewURL: {
