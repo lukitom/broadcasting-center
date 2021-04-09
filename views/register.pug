@@ -16,7 +16,8 @@ html(lang="pl")
         section(id="main" class="container")
             div(id="formRegisterDiv" class="formDiv")
                 form(id="registerForm" class="formularz" action="/register" method="POST")
-                    include ./partials/messages
+                    if typeof errors != 'undefined'
+                        p(class="errorRegister" id="errorRegister")=errors[0].msg
                     label(for="loginRegisterId") Login
                     br
                     input(class="textForm" id="loginRegisterId" type="text" name="login" required)

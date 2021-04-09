@@ -20,7 +20,10 @@ exports.registerSystem = async (req, res) => {
 
     if(errors.length > 0){
         res.render('register', {
-            errors
+            errors,
+            User: {
+                logged: false
+            }
         });
     }else{
         // register form was validated succesfully
@@ -31,7 +34,10 @@ exports.registerSystem = async (req, res) => {
                     errors.splice(0, 0, {msg: 'Istnieje już użytkownik o podanym adresie email'});
                     req.flash('error', 'Istnieje już użytkownik o podanym adresie email');
                     res.render('register', {
-                        errors
+                        errors,
+                        User: {
+                            logged: false
+                        }
                     });
                 }else{
                     // if user with this email doesn't exist -> check if login exist
@@ -41,7 +47,10 @@ exports.registerSystem = async (req, res) => {
                             req.flash('error', 'Istnieje już użytkownik o takim loginie');
                             if(userLoginTest.login == login){
                                 res.render('register', {
-                                errors
+                                    errors,
+                                    User: {
+                                        logged: false
+                                    }
                                 });
                             }
 
