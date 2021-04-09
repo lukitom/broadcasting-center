@@ -7,6 +7,7 @@ html(lang="pl")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet" type="text/css" href="css/main.css")
         link(rel="stylesheet" type="text/css" href="css/css-index.css")
+        link(rel="icon" type="image/ico" href="FavBroCenter.ico")
         title Strona główna Broadcasting Center
     body
         section(id="naglowek" class="headerSection")
@@ -14,25 +15,33 @@ html(lang="pl")
         include ./partials/navBar
         section(id="main" class="container")
             div(id="playlista" class="panelLewy")
-                p Piosenki na dzisiaj i później
+                p Piosenki na dzisiaj i jutro
                 hr
                 each n, i in playlista
-                    p
-                        | #{n.title} / #{n.artist} - 
-                        if n.prewiewURL != null
-                            a(class="link" href=n.prewiewURL) Posłuchaj fragmentu
-                        else
-                            | brak podglądu
+                    if !n._id
+                        p
+                            | #{n.date}
+                    else
+                        p
+                            | #{n.title} / #{n.artist} - 
+                            if n.prewiewURL != null
+                                a(class="link" href=n.prewiewURL) Posłuchaj fragmentu
+                            else
+                                | brak podglądu
             div(id="odsluchane" class="panelPrawy")
                 p Piosenki z poprzednich dni
                 hr
                 each n, i in odsluchane
-                    p
-                        | #{n.title} / #{n.artist} - 
-                        if n.prewiewURL != null
-                            a(class="link" href=n.prewiewURL) Posłuchaj fragmentu
-                        else
-                            | brak podglądu
+                    if !n._id
+                        p
+                            | #{n.date}
+                    else
+                        p
+                            | #{n.title} / #{n.artist} - 
+                            if n.prewiewURL != null
+                                a(class="link" href=n.prewiewURL) Posłuchaj fragmentu
+                            else
+                                | brak podglądu
         section(id="stopka" class="footerSection")
             footer(id="footer" class="footerTag")
                 p ( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)

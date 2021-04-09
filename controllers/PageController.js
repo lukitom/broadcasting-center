@@ -11,7 +11,6 @@ const index = async (req, res) => {
         User.admin = (req.session.passport.user.permission == 'admin') ? true : false;
     }
 
-    // ! TODO: zrobić pobieranie piosenek z bazy na konkretny dzień
     const filters = {
         date: {
             $gte: moment().subtract(5, 'days').format('L'),
@@ -25,16 +24,34 @@ const index = async (req, res) => {
     await PlayModel.find(filters, null, {sort: { date: 1}}, async (err, result) => {
         if(err) console.error(err);
 
+        let dateTemp;
+
         await result.forEach(async (song) => {
             let date1 = new Date(song.date);
             let date2 = new Date(moment().format('L'));
+            let changeDate;
+
+            if(dateTemp != moment(date1).format('L')) {
+                changeDate = true;
+            }else{
+                changeDate = false;
+            }
+            dateTemp = moment(date1).format('L');
 
             if (date1 >= date2) {
+                if(changeDate){
+                    playlista.push({ date: moment(date1).format('L') })
+                }
                 await playlista.push(song);
             } else {
-                await odsluchane.push(song);
+                // ! TODO: poprawić kolejność wyświetlania 
+                if (changeDate) {
+                    odsluchane.unshift({ date: moment(date1).format('L') })
+                }
+                await odsluchane.unshift(song);
             }
         });
+        await odsluchane.reverse();
 
         await res.render('index', {
             playlista,
