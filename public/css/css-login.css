@@ -1,62 +1,38 @@
-header{
-    background-color: #999;
-    float: left;
-    width: 100%;
-    font-size: 2.5rem;
-    text-transform: uppercase;
-}
-a{
-    text-decoration: none;
-}
 .container{
-    background-color: #faf;
-    width: 100%;
-    float: left;
+    background-color: #fff;
+    border: .25rem solid #208cc7;
+    width: 300px;
+    display: inline-block;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 1rem;
+    padding-top: 1rem;
 }
 .formDiv{
-    background-color: #ffa;
-    width: 70%;
-    float: left;
-    margin-left: 15%;
-    margin-right: 15%;
-    text-align: center;
-}
-.linkDiv{
-    background-color: #8f8;
-    width: 70%;
-    float: left;
-    margin-left: 15%;
-    margin-right: 15%;
-    text-align: center;
-}
-.navSection{
-    width: 100%;
-    background-color: #aff;
-    float: left;
-}
-.navSubpage{
+    width: 225px;
+    color: #208cc7;
+    display: inline-block;
     text-align: left;
-    float: left;
 }
-.navLogin{
-    text-align: right;
-    float: right;
+.formDiv input{
+    width: 221px;
+    margin-bottom: 1.5rem;
 }
-.linkSubpage {
-    margin-left: 1rem;
+.textForm, .passwordForm{
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid #208cc7;
+    margin-bottom: 1rem;
 }
-.active{
-    margin-right: 1rem;
-}
-.linkLogin{
-    margin-right: 1rem;
-}
-.footerSection{
-    background-color: #88F;
-    text-align: center;
-    width: 100%;
-    float: left;
-}
-.footerTag{
-    text-align: right;
-}
+/* .linkDiv{
+    background-color: #20E395;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    border-radius: 1rem;
+    display: inline-block;
+} */

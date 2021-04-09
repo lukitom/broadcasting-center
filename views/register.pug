@@ -23,18 +23,21 @@ html(lang="pl")
             div(id="formRegisterDiv" class="formDiv")
                 form(id="registerForm" class="formularz" action="/register" method="POST")
                     include ./partials/messages
-                    label(for="loginRegisterId") Login: 
-                    input(class="textForm" id="loginRegisterId" type="text" name="login" placeholder="Podaj login" required)
+                    label(for="loginRegisterId") Login
                     br
-                    label(for="emailRegister") E-mail: 
-                    input(class="textForm" id="emailRegister" type="text" name="email" placeholder="Podaj swój e-amil" required)
+                    input(class="textForm" id="loginRegisterId" type="text" name="login" required)
                     br
-                    label(for="password") Hasło: 
-                    input(class="passwordForm" id="password" type="password" name="password" placeholder="Podaj swoje hasło" required)
+                    label(for="emailRegister") E-mail
                     br
-                    button(class="przycisk" id="zarejestruj" type="submit" name="zarejestruj") Zarejestruj
-            div(class="linkDiv" id="loginLink")
-                a(id="linkLogin" class="link" href="/login") Zaloguj się
+                    input(class="textForm" id="emailRegister" type="text" name="email" required)
+                    br
+                    label(for="password") Hasło
+                    br
+                    input(class="passwordForm" id="password" type="password" name="password" required)
+                    br
+                    button(class="przycisk" id="zarejestruj" type="submit" name="zarejestruj") Utwórz konto
+            //- div(class="linkDiv" id="loginLink")
+            //-     a(id="linkLogin" class="link" href="/login") Zaloguj się
         section(id="stopka" class="footerSection")
             footer(id="footer" class="footerTag")
                 p ( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)

@@ -11,12 +11,176 @@ body{
     text-align: center;
 }
 body::-webkit-scrollbar{
-    width: .375rem;    
+    width: .5rem;
+    height: .5rem;    
 }
 body::-webkit-scrollbar-track{
-    background: #ddd;
+    background: #12a8e3;
 }
 body::-webkit-scrollbar-thumb{
-    background: linear-gradient(#10B6D1 0%, #0074B1);
-    border-radius: 3px;
+    background: #0074B1;
 }
+.headerSection{
+    width: 100%;
+    background-color: #0074B1;
+    text-align: left;
+}
+.headerTag{
+    color: #fff;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    display: inline-block;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    letter-spacing: .5rem;
+}
+a{
+    text-decoration: none;
+}
+.navSection{
+    width: 100%;
+    background-color: #208cc7;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    float: left;
+    font-size: 1rem;
+}
+.navSubpage{
+    padding-left: 1rem;
+    float: left;
+}
+.navLogin{
+    padding-right: 1rem;
+    float: right;
+}
+.linkLogin{
+    color: #fff;
+    transition: 300ms;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    text-decoration: none;
+    display: inline-block;
+}
+.linkLogin:after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: 300ms;
+}
+.linkLogin:hover::after{
+    width: 100%;
+    transition: 300ms;
+    background: #fff;
+}
+.linkSubpage{
+    color: #fff;
+    transition: 300ms;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    text-decoration: none;
+    display: inline-block;
+}
+.linkSubpage:after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: 300ms;
+}
+.linkSubpage:hover::after{
+    width: 100%;
+    transition: 300ms;
+    background: #fff;
+}
+/* .linkSubpage:hover, .linkLogin:hover, .active:hover{
+    text-shadow: 2px 2px 0 #ffffff60;
+} */
+.active{
+    color: #fff;
+    transition: 300ms;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    text-decoration: none;
+    display: inline-block;
+}
+.active:after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: 300ms;
+}
+.active:hover::after{
+    width: 100%;
+    transition: 300ms;
+    background: #fff;
+}
+/* .active{
+    color: #fff;
+    transition: 300ms;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5rem;
+}
+.active:after{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    transition: 300ms;
+} */
+.formularz {
+    outline: none;
+}
+.formularz button {
+    width: 70%;
+    margin-left: 15%;
+    border: 1px solid #fff;
+    border-radius: .2rem;
+    background: none;
+    cursor: pointer;
+    color: #fff;
+    font-family: 'Comfortaa', cursive;
+    font-weight: 700;
+    padding: 10px 20px;
+    transition: 300ms cubic-bezier(0.46,-0.46, 0.42, 1.38);
+    letter-spacing: .1rem;
+    background: #208cc7;
+}
+.formularz button:hover{
+    width: 100%;
+    margin-left: 0;
+    letter-spacing: 0.2rem;
+}
+.formularz .errorRegister{
+    color: #f00;
+}
+.footerSection{
+    background-color: #0074B1;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    float: left;
+}
+.footerTag{
+    text-align: right;
+    margin-right: 1rem;
+}
+@media screen and (max-width: 600px) {
+    .headerTag {
+        font-size: 1.5rem;
+    }
+}
+/* @media screen and (max-width: 1850px) {
+    .navSection{
+        font-size: .5rem;
+    }
+} */
