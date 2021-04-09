@@ -17,15 +17,17 @@ html(lang="pl")
             div(id="logowanie" class="formDiv")
                 form(id="login" class="formularz" action="/login" method="POST")
                     include ./partials/messages
-                    label(for="loginLogIn") Login: 
-                    input(class="textForm" id="loginLogIn" type="text" name="login" placeholder="Podaj swój login" required)
+                    label(for="loginLogIn") Login
                     br
-                    label(for="password") Hasło: 
-                    input(class="passwordForm" id="password" type="password" name="password" placeholder="Podaj hasło" required)
+                    input(class="textForm" id="loginLogIn" type="text" name="login" required)
+                    br
+                    label(for="password") Hasło
+                    br
+                    input(class="passwordForm" id="password" type="password" name="password" required)
                     br
                     button(class="przycisk" id="zaloguj" type="submit" name="zaloguj") Zaloguj
-            div(id="rejestracja" class="linkDiv")
-                a(class="link" id="linkRegister" href="/register") Zarejestruj się
+            //- div(id="rejestracja" class="linkDiv")
+            //-     a(class="link" id="linkRegister" href="/register") Zarejestruj się
         section(id="stopka" class="footerSection")
             footer(id="footer" class="footerTag")
-                p ( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)
+                p St00pka ( ͡° ͜ʖ ͡°)

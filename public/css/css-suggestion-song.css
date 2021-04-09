@@ -1,51 +1,17 @@
-header{
-    background-color: #999;
-    float: left;
-    width: 100%;
-    font-size: 2.5rem;
-    text-transform: uppercase;
-}
-a{
-    text-decoration: none;
-}
-.navSection{
-    width: 100%;
-    background-color: #aff;
-    float: left;
-}
-.navLogin{
-    text-align: right;
-    float: right;
-}
-.navSubpage{
-    text-align: left;
-    float: left;
-}
-.linkSubpage , .active{
-    margin-left: 1rem;
-}
-.linkLogin{
-    margin-right: 1rem;
-}
+
 .container{
-    background-color: #faf;
+    background-color: #fff;
     width: 100%;
-    float: left;
+    display: inline-block;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: center;
 }
 .containerMid{
-    background-color: #ffa;
-    width: 70%;
-    float: left;
-    margin-left: 15%;
-    margin-right: 15%;
+    background-color: #12a8e3;
+    width: 750px;
+    color: #fff;
+    border-radius: 1rem;
     text-align: center;
-}
-.footerSection{
-    background-color: #88F;
-    text-align: center;
-    width: 100%;
-    float: left;
-}
-.footerTag{
-    text-align: right;
+    display: inline-block;
 }

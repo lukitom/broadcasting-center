@@ -1,53 +1,24 @@
-header{
-    background-color: #999;
-    float: left;
-    width: 100%;
-    font-size: 2.5rem;
-    text-transform: uppercase;
-}
-a{
-    text-decoration: none;
-}
-.navSection{
-    width: 100%;
-    background-color: #aff;
-    float: left;
-}
-.navSubpage{
-    text-align: left;
-    float: left;
-}
-.linkSubpage , .active{
-    margin-left: 1rem;
-}
-.linkLogin{
-    margin-right: 1rem;
-}
-.navLogin{
-    text-align: right;
-    float: right;
-}
 .container{
-    background-color: #faf;
+    background-color: #fff;
     width: 100%;
-    float: left;
+    display: inline-block;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: center;
 }
 .panelLewy{
-    background-color: #ffa;
-    width: 50%;
-    float: left;
+    background-color: #12a8e3;
+    width: 650px;
+    color: #fff;
+    border-radius: 1rem;
+    display: inline-block;
+    margin-right: 1rem;
 }
 .panelPrawy{
-    background-color: #8f8;
-    width: 50%;
-    float: right;
-}
-.footerSection{
-    background-color: #88F;
-    text-align: center;
-    width: 100%;
-    float: left;
-}
-.footerTag{
-    text-align: right;
+    background-color: #12a8e3;
+    width: 650px;
+    color: #fff;
+    border-radius: 1rem;
+    display: inline-block;
+    margin-left: 1rem;
 }
