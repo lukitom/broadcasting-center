@@ -20,24 +20,23 @@ html(lang="pl")
             include ./partials/navBar
             section(id="main" class="container")
                 div(id="lewy" class="panelLewy")
+                    p(class="conTitle") Linki do zaktualizowania bazy danych piosenek
                     a(class="link"  href="/spotify/playlist/37i9dQZEVXbMDoHDwVN2tF") Top 50 świat
                     br
                     a(class="link"  href="/spotify/playlist/37i9dQZEVXbN6itCcaL3Tt") Top 50 Polska
                     br
                     //- dwa niżej nie działają (Just hits oraz Chill Hits)
-                    a(class="link"  href="/spotify/playlist/37i9dQZF1DXcRXFNfZr7Tp") Just hits
-                    br
-                    a(class="link"  href="/spotify/playlist/37i9dQZF1DX4WYpdgoIcn6") Chill Hits
-                    br
+                    //- a(class="link"  href="/spotify/playlist/37i9dQZF1DXcRXFNfZr7Tp") Just hits
+                    //- br
+                    //- a(class="link"  href="/spotify/playlist/37i9dQZF1DX4WYpdgoIcn6") Chill Hits
+                    //- br
                     a(class="link"  href="/spotify/playlist/37i9dQZF1DXcBWIGoYBM5M") Today's Top Hits
                 div(id="poczekalnia" class="panelPrawy")
+                    p(class="conTitle") Wyszukiwanie playlist do dodania
                     div(class="searching" id="searchPlaylist")
                         div(class="containerMid")
                             input(class="textForm" id="textForm" name="wyszukaj" type="text")
                             br
                             button(class="przycisk" id="search") Wyszukaj
                         div(class="containerMid" id="containerM")
-
-        section(id="stopka" class="footerSection")
-            footer(id="footer" class="footerTag")
-                p ( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)
+        include ./partials/footer.pug

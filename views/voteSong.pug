@@ -39,10 +39,4 @@ html(lang="pl")
                                     if User.canVote
                                         a(class="voteLink" href="/voteSong/"+n._id)
                                             button Głosuj
-        section(id="stopka" class="footerSection")
-            div(id="footer" class="footerTag")
-                p(class="footerAuthor") Autorzy projektu
-                p(class="author") Kulesza Damian
-                p(class="author") Krystian Lisowski
-                p(class="author") Mikłosz Jakub
-                p(class="author") Tomaszek Łukasz
+        include ./partials/footer.pug
