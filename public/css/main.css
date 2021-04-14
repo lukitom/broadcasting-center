@@ -4,6 +4,7 @@
     font-size: 16px;
     font-family: 'Comfortaa', cursive;
     font-weight: 700;
+    outline: none;
 }
 body{
     margin: 0;
@@ -20,6 +21,13 @@ body::-webkit-scrollbar-track{
 body::-webkit-scrollbar-thumb{
     background: #0074B1;
 }
+.pageView{
+    min-height: 100vh;
+}
+::selection {
+    color: #0074B1;
+    background: #fff;
+  }
 .headerSection{
     width: 100%;
     background-color: #0074B1;
@@ -35,14 +43,22 @@ body::-webkit-scrollbar-thumb{
     padding-left: 1rem;
     letter-spacing: .5rem;
 }
+/* .logotyp1{
+    height: 2rem;
+    margin-left: 1rem;
+    display: none;
+} */
+.logotyp2{
+    height: 2rem;
+    margin-left: 1rem;
+}
 a{
     text-decoration: none;
+    color: #0012b1;
 }
 .navSection{
     width: 100%;
     background-color: #208cc7;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
     float: left;
     font-size: 1rem;
 }
@@ -57,12 +73,21 @@ a{
 .linkLogin{
     color: #fff;
     transition: 300ms;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     text-decoration: none;
     display: inline-block;
+    margin-top: .5rem;
+    padding-top: .5rem;
+    padding-bottom: 1rem;
 }
-.linkLogin:after{
+.linkLogin:hover{
+    background: #fff;
+    color: #208cc7;
+    margin-top: 0;
+    padding-top: 1rem;
+}
+/* .linkLogin:after{
     content: '';
     display: block;
     width: 0;
@@ -74,16 +99,25 @@ a{
     width: 100%;
     transition: 300ms;
     background: #fff;
-}
+} */
 .linkSubpage{
     color: #fff;
     transition: 300ms;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     text-decoration: none;
     display: inline-block;
+    margin-top: .5rem;
+    padding-top: .5rem;
+    padding-bottom: 1rem;
 }
-.linkSubpage:after{
+.linkSubpage:hover{
+    background: #fff;
+    color: #208cc7;
+    margin-top: 0;
+    padding-top: 1rem;
+}
+/* .linkSubpage:after{
     content: '';
     display: block;
     width: 0;
@@ -95,19 +129,28 @@ a{
     width: 100%;
     transition: 300ms;
     background: #fff;
-}
+} */
 /* .linkSubpage:hover, .linkLogin:hover, .active:hover{
     text-shadow: 2px 2px 0 #ffffff60;
 } */
-.active{
+/* .active{
     color: #fff;
     transition: 300ms;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     text-decoration: none;
     display: inline-block;
+    margin-top: .5rem;
+    padding-top: .5rem;
+    padding-bottom: 1rem;
 }
-.active:after{
+.active:hover{
+    background: #fff;
+    color: #208cc7;
+    margin-top: 0;
+    padding-top: 1rem;
+} */
+/* .active:after{
     content: '';
     display: block;
     width: 0;
@@ -119,6 +162,18 @@ a{
     width: 100%;
     transition: 300ms;
     background: #fff;
+} */
+.conTitle{
+    font-size: 1.5rem;
+    letter-spacing: 0.1rem;
+}
+.conDate{
+    text-align: left;
+    margin-left: 3rem;
+}
+.conSong{
+    text-align: left;
+    margin-left: 5rem;
 }
 /* .active{
     color: #fff;
@@ -137,9 +192,9 @@ a{
     background: #fff;
     transition: 300ms;
 } */
-.formularz {
-    outline: none;
-}
+/* .formularz input{
+    border: none;
+} */
 .formularz button {
     width: 70%;
     margin-left: 15%;
@@ -162,6 +217,7 @@ a{
 }
 .formularz .errorRegister{
     color: #f00;
+    margin-bottom: 1rem;
 }
 .footerSection{
     background-color: #0074B1;
@@ -171,16 +227,155 @@ a{
     float: left;
 }
 .footerTag{
-    text-align: right;
-    margin-right: 1rem;
+    text-align: center;
 }
-@media screen and (max-width: 600px) {
+.footerAuthor{
+    text-transform: uppercase;
+    letter-spacing: .5rem;
+    font-size: 2.5rem;
+    margin: 0;
+    padding: 0;
+    padding-top: 1rem;
+}
+.author{
+    font-size: 1.5rem;
+    width: 25%;
+    height: 100%;
+    display: inline-block;
+    letter-spacing: 0.1rem;
+    transition: 300ms;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0;
+}
+.author:hover{
+    letter-spacing: 0.2rem;
+    background: #12a8e3;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin: 0;
+}
+@media screen and (max-width: 760px) {
     .headerTag {
         font-size: 1.5rem;
+        letter-spacing: .15rem;
+    }
+    .logotyp2{
+        height: 1.25rem;
     }
 }
-/* @media screen and (max-width: 1850px) {
-    .navSection{
-        font-size: .5rem;
+@media screen and (max-width: 700px) {
+    .navLogin{
+        width: 100%;
+        padding: 0;
     }
+    .navSubpage{
+        width: 100%;
+        padding: 0;
+    }
+    .linkLogin{
+        width: 100%;
+        padding-left: 2rem;
+        padding-right: 3rem;
+        padding-top: .2rem;
+        padding-bottom: .2rem;
+        margin: 0;
+    }
+    .linkSubpage{
+        width: 100%;
+        padding-left: 2rem;
+        padding-right: 3rem;
+        padding-top: .2rem;
+        padding-bottom: .2rem;
+        margin-top: 0;
+    }
+    .linkLogin:hover{
+        background-color: #12a8e3;
+        padding-left: 3rem;
+        color: #fff;
+        margin-top: 0;
+        padding-top: .2rem;
+        padding-bottom: .2rem;
+    }
+    .linkSubpage:hover{
+        background-color: #12a8e3;
+        padding-left: 3rem;
+        color: #fff;
+        margin-top: 0;
+        padding-top: .2rem;
+        padding-bottom: .2rem;
+    }
+    .linkSubpage:after{
+        display: none;
+    }
+    .linkLogin:after{
+        display: none;
+    }
+    .navSection{
+        text-align: left;
+        font-size: 1.25rem;
+    }
+}
+@media screen and (max-width: 650px) {
+    .headerSection{
+        width: 650px;
+    }
+    .navSection{
+        width: 650px;
+    }
+    .linkSubpage{
+        width: 570px;
+    }
+    .linkLogin{
+        width: 570px;
+    }
+    .linkSubpage:hover{
+        width: 554px;
+    }
+    .linkLogin:hover{
+        width: 554px;
+    }
+    .footerSection{
+        width: 650px;
+    }
+}
+input[type="checkbox"]{
+    float: right;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    position: relative;
+    width: 40px;
+    height: 20px;
+    appearance: none;
+    background: #ccc;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
+    transition: 500ms;
+}
+input[type="checkbox"]:checked{
+    background: #3498db;
+}
+input[type="checkbox"]:before{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+    background: #aaa;
+    transform: scale(1.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    transition: 500ms;
+}
+input:checked[type="checkbox"]:before{
+    left: 20px;
+    background: #fff;
+}
+/* .headerSection .dark{
+    background-color: #2b2b2b;
+}
+.headerTag .dark{
+    color: #0074B1;
 } */

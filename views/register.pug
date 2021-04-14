@@ -8,31 +8,39 @@ html(lang="pl")
         link(rel="stylesheet" type="text/css" href="css/main.css")
         link(rel="stylesheet" type="text/css" href="css/css-register-form.css")
         link(rel="icon" type="image/ico" href="FavBroCenter.ico")
-        title Rejestracja w Broadcasting Center
+        title Zarejestruj się
     body
-        section(id="naglowek" class="headerSection")
-            header(id="header" class="headerTag") Blah Blah
-        include ./partials/navBar
-        section(id="main" class="container")
-            div(id="formRegisterDiv" class="formDiv")
-                form(id="registerForm" class="formularz" action="/register" method="POST")
-                    if typeof errors != 'undefined'
-                        p(class="errorRegister" id="errorRegister")=errors[0].msg
-                    label(for="loginRegisterId") Login
-                    br
-                    input(class="textForm" id="loginRegisterId" type="text" name="login" required)
-                    br
-                    label(for="emailRegister") E-mail
-                    br
-                    input(class="textForm" id="emailRegister" type="text" name="email" required)
-                    br
-                    label(for="password") Hasło
-                    br
-                    input(class="passwordForm" id="password" type="password" name="password" required)
-                    br
-                    button(class="przycisk" id="zarejestruj" type="submit" name="zarejestruj") Utwórz konto
-            //- div(class="linkDiv" id="loginLink")
-            //-     a(id="linkLogin" class="link" href="/login") Zaloguj się
+        section(class="pageView")
+            section(id="naglowek" class="headerSection")
+                a(href="/index")
+                    //- img(class="logotyp1" src="logo2.png" alt="logo")
+                    img(class="logotyp2" src="logo1.png" alt="logo")
+                header(id="header" class="headerTag") Broadcasting Center
+            include ./partials/navBar
+            section(id="main" class="container")
+                div(id="formRegisterDiv" class="formDiv")
+                    form(id="registerForm" class="formularz" action="/register" method="POST")
+                        if typeof errors != 'undefined'
+                            div(class="errorRegister" id="errorRegister")=errors[0].msg
+                        label(for="loginRegisterId") Login
+                        br
+                        input(class="textForm" id="loginRegisterId" type="text" name="login" required)
+                        br
+                        label(for="emailRegister") E-mail
+                        br
+                        input(class="textForm" id="emailRegister" type="text" name="email" required)
+                        br
+                        label(for="password") Hasło
+                        br
+                        input(class="passwordForm" id="password" type="password" name="password" required)
+                        br
+                        button(class="przycisk" id="zarejestruj" type="submit" name="zarejestruj") Utwórz konto
+                //- div(class="linkDiv" id="loginLink")
+                //-     a(id="linkLogin" class="link" href="/login") Zaloguj się
         section(id="stopka" class="footerSection")
-            footer(id="footer" class="footerTag")
-                p ( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)
+            div(id="footer" class="footerTag")
+                p(class="footerAuthor") Autorzy projektu
+                p(class="author") Kulesza Damian
+                p(class="author") Krystian Lisowski
+                p(class="author") Mikłosz Jakub
+                p(class="author") Tomaszek Łukasz

@@ -8,40 +8,47 @@ html(lang="pl")
         link(rel="stylesheet" type="text/css" href="css/main.css")
         link(rel="stylesheet" type="text/css" href="css/css-index.css")
         link(rel="icon" type="image/ico" href="FavBroCenter.ico")
-        title Strona główna Broadcasting Center
+        title Broadcasting Center
     body
-        section(id="naglowek" class="headerSection")
-            header(id="header" class="headerTag") Bro Center
-        include ./partials/navBar
-        section(id="main" class="container")
-            div(id="playlista" class="panelLewy")
-                p Piosenki na dzisiaj i jutro
-                hr
-                each n, i in playlista
-                    if !n._id
-                        p
-                            | #{n.date}
-                    else
-                        p
-                            | #{n.title} / #{n.artist} - 
-                            if n.prewiewURL != null
-                                a(class="link" href=n.prewiewURL) Posłuchaj fragmentu
-                            else
-                                | brak podglądu
-            div(id="odsluchane" class="panelPrawy")
-                p Piosenki z poprzednich dni
-                hr
-                each n, i in odsluchane
-                    if !n._id
-                        p
-                            | #{n.date}
-                    else
-                        p
-                            | #{n.title} / #{n.artist} - 
-                            if n.prewiewURL != null
-                                a(class="link" href=n.prewiewURL) Posłuchaj fragmentu
-                            else
-                                | brak podglądu
+        section(class="pageView")
+            section(id="naglowek" class="headerSection")
+                a(href="/index")
+                    //- img(class="logotyp1" src="logo2.png" alt="logo")
+                    img(class="logotyp2" src="logo1.png" alt="logo")
+                header(id="header" class="headerTag") Broadcasting Center
+                //- input(type="checkbox" id="checkbox1" class="checkbox1")
+            include ./partials/navBar
+            section(id="main" class="container")
+                div(id="playlista" class="panelLewy")
+                    p(class="conTitle") Piosenki na dzisiaj i jutro
+                    each n, i in playlista
+                        if !n._id
+                            p(class="conDate")
+                                | #{n.date}
+                        else
+                            p(class="conSong")
+                                | #{n.title} / #{n.artist} - 
+                                if n.prewiewURL != null
+                                    a(class="link" href=n.prewiewURL) Posłuchaj fragmentu
+                                else
+                                    | brak podglądu
+                div(id="odsluchane" class="panelPrawy")
+                    p(class="conTitle") Piosenki z poprzednich dni
+                    each n, i in odsluchane
+                        if !n._id
+                            p(class="conDate")
+                                | #{n.date}
+                        else
+                            p(class="conSong")
+                                | #{n.title} / #{n.artist} - 
+                                if n.prewiewURL != null
+                                    a(class="link" href=n.prewiewURL) Posłuchaj fragmentu
+                                else
+                                    | brak podglądu
         section(id="stopka" class="footerSection")
-            footer(id="footer" class="footerTag")
-                p ( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)
+            div(id="footer" class="footerTag")
+                p(class="footerAuthor") Autorzy projektu
+                p(class="author") Kulesza Damian
+                p(class="author") Krystian Lisowski
+                p(class="author") Mikłosz Jakub
+                p(class="author") Tomaszek Łukasz

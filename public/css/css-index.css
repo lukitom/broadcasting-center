@@ -9,16 +9,64 @@
 .panelLewy{
     background-color: #12a8e3;
     width: 650px;
+    height: 700px;
     color: #fff;
-    border-radius: 1rem;
+    border-radius: .5rem;
     display: inline-block;
     margin-right: 1rem;
+    overflow: auto;
 }
 .panelPrawy{
     background-color: #12a8e3;
     width: 650px;
+    height: 700px;
     color: #fff;
-    border-radius: 1rem;
+    border-radius: .5rem;
     display: inline-block;
     margin-left: 1rem;
+    overflow: auto;
+}
+.panelPrawy::-webkit-scrollbar{
+    width: .5rem;
+    height: .5rem;
+    margin-left: 1rem;
+}
+.panelPrawy::-webkit-scrollbar-track{
+    background: none repeat scroll 0;
+}
+.panelPrawy::-webkit-scrollbar-thumb{
+    background: #0074B1;
+    border-radius: .5rem;
+}
+.panelLewy::-webkit-scrollbar{
+    width: .5rem;
+    height: .5rem;
+    margin-left: 1rem;
+}
+.panelLewy::-webkit-scrollbar-track{
+    background: none repeat scroll 0;
+}
+.panelLewy::-webkit-scrollbar-thumb{
+    background: #0074B1;
+    border-radius: .5rem;
+}
+@media screen and (max-width: 1350px) {
+    .panelLewy{
+        margin-right: 8rem;
+        margin-left: 8rem;
+        margin-bottom: 2rem;
+    }
+    .panelPrawy{
+        margin-right: 8rem;
+        margin-left: 8rem;
+    }
+}
+@media screen and (max-width: 1250px) {
+    .panelLewy{
+        margin: 0;
+        margin-bottom: 2rem;
+    }
+    .panelPrawy{
+        margin: 0;
+    }
 }

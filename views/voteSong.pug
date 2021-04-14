@@ -11,30 +11,38 @@ html(lang="pl")
         //script(src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js")
         //script(src="/js/vote.js")
         link(rel="icon" type="image/ico" href="FavBroCenter.ico")
-        title Strona główna Broadcasting Center
+        title Głosuj
     body
-        section(id="naglowek" class="headerSection")
-            header(id="header" class="headerTag") Blah Blah
-        include ./partials/navBar
-        section(id="main" class="container")
-            div(id="playlista" class="panelLewy")
-                if fullSong != 'undefined'
-                    each n, i in fullSongs
-                        p
-                            | #{n.title} / #{n.artist} - 
-                            a(class="link" href=n.prewiewURL) Posłuchaj fragmentu 
-                            if User.canVote
-                                a(class="voteLink" href="/voteSong/"+n._id)
-                                    button Głosuj
-            div(id="odsluchane" class="panelPrawy")
-                    if resultVote != 'undefined'
-                        each n, i in resultVote
+        section(class="pageView")
+            section(id="naglowek" class="headerSection")
+                a(href="/index")
+                    //- img(class="logotyp1" src="logo2.png" alt="logo")
+                    img(class="logotyp2" src="logo1.png" alt="logo")
+                header(id="header" class="headerTag") Broadcasting Center
+            include ./partials/navBar
+            section(id="main" class="container")
+                div(id="playlista" class="panelLewy")
+                    if fullSong != 'undefined'
+                        each n, i in fullSongs
                             p
                                 | #{n.title} / #{n.artist} - 
                                 a(class="link" href=n.prewiewURL) Posłuchaj fragmentu 
                                 if User.canVote
                                     a(class="voteLink" href="/voteSong/"+n._id)
                                         button Głosuj
+                div(id="odsluchane" class="panelPrawy")
+                        if resultVote != 'undefined'
+                            each n, i in resultVote
+                                p
+                                    | #{n.title} / #{n.artist} - 
+                                    a(class="link" href=n.prewiewURL) Posłuchaj fragmentu 
+                                    if User.canVote
+                                        a(class="voteLink" href="/voteSong/"+n._id)
+                                            button Głosuj
         section(id="stopka" class="footerSection")
-            footer(id="footer" class="footerTag")
-                p ( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)
+            div(id="footer" class="footerTag")
+                p(class="footerAuthor") Autorzy projektu
+                p(class="author") Kulesza Damian
+                p(class="author") Krystian Lisowski
+                p(class="author") Mikłosz Jakub
+                p(class="author") Tomaszek Łukasz

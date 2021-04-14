@@ -13,15 +13,25 @@ html(lang="pl")
         link(rel="icon" type="image/ico" href="FavBroCenter.ico")
         title Zaproponuj piosenkę
     body
-        section(id="naglowek" class="headerSection")
-            header(id="header" class="headerTag") Blah Blah
-        include ./partials/navBar
-        section(id="main" class="container")
-            div(class="containerMid")
-                input(class="textForm" id="textForm" name="wyszukaj" type="text")
-                br
-                button(class="przycisk" id="search") Wyszukaj
-            div(class="containerMid" id="containerM")
+        section(class="pageView")
+            section(id="naglowek" class="headerSection")
+                a(href="/index")
+                    //- img(class="logotyp1" src="logo2.png" alt="logo")
+                    img(class="logotyp2" src="logo1.png" alt="logo")
+                header(id="header" class="headerTag") Broadcasting Center
+            include ./partials/navBar
+            section(id="main" class="container")
+                div(class="containerMid")
+                    label(for="search") Szukaj Swoich Ulubionych Utworów
+                    br
+                    br
+                    input(class="textForm" id="textForm" name="wyszukaj" type="text")
+                    button(class="przycisk" id="search") Wyszukaj
+                div(class="searchResult" id="containerM")
         section(id="stopka" class="footerSection")
-            footer(id="footer" class="footerTag")
-                p ( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)
+            div(id="footer" class="footerTag")
+                p(class="footerAuthor") Autorzy projektu
+                p(class="author") Kulesza Damian
+                p(class="author") Krystian Lisowski
+                p(class="author") Mikłosz Jakub
+                p(class="author") Tomaszek Łukasz

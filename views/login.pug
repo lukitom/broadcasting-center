@@ -8,26 +8,34 @@ html(lang="pl")
         link(rel="stylesheet" type="text/css" href="css/main.css")
         link(rel="stylesheet" type="text/css" href="css/css-login.css")
         link(rel="icon" type="image/ico" href="FavBroCenter.ico")
-        title Zaloguj się do Broadcasting Center
+        title Zaloguj się
     body
-        section(id="naglowek" class="headerSection")
-            header(id="header" class="headerTag") Blah Blah
-        include ./partials/navBar
-        section(id="main" class="container")
-            div(id="logowanie" class="formDiv")
-                form(id="login" class="formularz" action="/login" method="POST")
-                    include ./partials/messages
-                    label(for="loginLogIn") Login
-                    br
-                    input(class="textForm" id="loginLogIn" type="text" name="login" required)
-                    br
-                    label(for="password") Hasło
-                    br
-                    input(class="passwordForm" id="password" type="password" name="password" required)
-                    br
-                    button(class="przycisk" id="zaloguj" type="submit" name="zaloguj") Zaloguj
-            //- div(id="rejestracja" class="linkDiv")
-            //-     a(class="link" id="linkRegister" href="/register") Zarejestruj się
+        section(class="pageView")
+            section(id="naglowek" class="headerSection")
+                a(href="/index")
+                    //- img(class="logotyp1" src="logo2.png" alt="logo")
+                    img(class="logotyp2" src="logo1.png" alt="logo")
+                header(id="header" class="headerTag") Broadcasting Center
+            include ./partials/navBar
+            section(id="main" class="container")
+                div(id="logowanie" class="formDiv")
+                    form(id="login" class="formularz" action="/login" method="POST")
+                        include ./partials/messages
+                        label(for="loginLogIn") Login
+                        br
+                        input(class="textForm" id="loginLogIn" type="text" name="login" required)
+                        br
+                        label(for="password") Hasło
+                        br
+                        input(class="passwordForm" id="password" type="password" name="password" required)
+                        br
+                        button(class="przycisk" id="zaloguj" type="submit" name="zaloguj") Zaloguj
+                //- div(id="rejestracja" class="linkDiv")
+                //-     a(class="link" id="linkRegister" href="/register") Zarejestruj się
         section(id="stopka" class="footerSection")
-            footer(id="footer" class="footerTag")
-                p St00pka ( ͡° ͜ʖ ͡°)
+            div(id="footer" class="footerTag")
+                p(class="footerAuthor") Autorzy projektu
+                p(class="author") Kulesza Damian
+                p(class="author") Krystian Lisowski
+                p(class="author") Mikłosz Jakub
+                p(class="author") Tomaszek Łukasz
