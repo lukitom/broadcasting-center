@@ -1,12 +1,3 @@
-<style>
-img {
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
-    box-shadow: 0 0 5px #000000;
-    border-radius: 8px;
-}
-</style>
 # Broadcasting Center
 @LisKrystian
 Strona **Broadcasting Center** to aplikacja przeglądarkowa, służąca do głosowania i wybierania utworów przez społeczność Zespołu Szkół Elektrycznych. Utwory te później są odtwarzane w radiowęźle szkolnym. Pozwala również sprawdzić, jakie utwory były odtwarzane w dniach poprzednich. Do przeglądania utowrów, które były lub będą odtwarzane nie jest wymagane posiadanie konta, lecz zalogowanie się jest niezbędne, aby móc brać czynny udział w wybieraniu i głosowaniu na utwory.
@@ -16,35 +7,35 @@ Strona **Broadcasting Center** to aplikacja przeglądarkowa, służąca do głos
 Pod adresem **"/"** i **"/index"** znajduje się strona główna. Na niej znajdują się dwie cześci. Pierwsza zawiera listę utworów, których odtworzenie jest zaplanowane na dzisiaj oraz na następny dzień. Natomiast druga część zawiera historię utworów z poprzednich dni. Wszystkie utworzy w kolejnych dniach są oddzielone datą. Przy każdym utworze można odsłuchać jego fragment, jeśli jest dostępny.
 
 @Damian352
-<img src="/docs/index.png" alt="Strona główna" width="60%">
+![Strona główna](docs/index.png)
 
 @LisKrystian
 Pod adresem **"/login"** znajduje się formularz do zalogowania. Składa się z dwóch pól do wprowadzenia **loginu** oraz **hasła**. Każde pole musi być wypełnione. Pod nimi znajduje się przycisk **Zaloguj**, który zaloguje nas na konto z wyżej wpisanym loginem.
 
 @Damian352
 Formularz wyświetlający się przy logowaniu
-<img src="/docs/login.png" alt="Formularz do logowania" width="60%">
+![Formularz do logowania](/docs/login.png)
 
 @LisKrystian
 Pod adresem **"/register"** znajduje się formularz do zarejestrowania. Składa się z trzech pól do wprowadzenia **loginu**, **e-maila** oraz **hasła**. Każde pole musi być wypełnione. Hasło powinno zawierać co najmniej 8 znaków. Może się zdarzyć, że dany login lub adres e-mail jest już zajęty. W takiej sytuacji należy wpisać inne dane. Pod nimi znajduje się przycisk **Utwórz konto**, który zarejestruje nas na platformie i utworzy konto z wyżej wpisanymi danymi. Po rejestracji zostaniemy przeniesieni do strony **"/login"** gdzie musimy jeszcze raz wprowadzić dane, aby móc się zalogować
 
 @Damian352
 Formularz wyświetlający się przy rejestracji
-<img src="/docs/register.png" alt="Formularz do rejestracji" width="60%">
+![Formularz do rejestracji](/docs/register.png)
 
 @lukitom
 Do ścieżki **"/suggestionSong"** można dostać się po zalogowaniu się. Na niej znajdziemy formularz umożliwiający wyszukiwanie piosenek, które chcemy zaproponować na następny dzień. Istnieje zabezpieczenie przed dodaniem takiego samego utworu jeśli już ktoś to zrobił. Po dodanie automatycznie przeniesie użytkownika na stronę główną aplikacji.
 Pojawią się tylko utwory bez statusu *explicit*, czyli brak wylgaryzmów.
 
 @Damian352
-<img src="/docs/listOfSongs.png" alt="Lista piosenek po wyszukaniu" width="60%">
+![Lista piosenek po wyszukaniu](/docs/listOfSongs.png)
 
 @lukitom
 Aby uzyskać dostęp do ścieżki **"/adminPanel"** należy być zalogowanym oraz mieć specjalne uprawnienia tj. administratorskie. Tak samo jak na stronie głównej jest podział na dwie części, z czego pierwsza część odpowiada za możliwość pobrania danych z playlisty o tej nazwie do własnej bazy aplikacji (zmiejszamy obciążenie serwerów Spotify). Niestety Spotify nie pozwala na zapytanie playlistę zawierającą więcej niż 100 utworów, dlatego jeśli aplikacja przestaje działać należy przejść do strony głównej. Wina leży po stronie Spotify (zabezpieczenia przed przeciażeniem).
 Druga część panelu składa się z podobnego formularza jak na stronie **"/suggestionSong"** z tą różnicą, że wyszukiwany jest tytuł playlisty. Jako wynik wyszukiwania jest lista playlist. Po kliknięciu w nazwę playlisty jest wywoływana taka sama akcja jak w pierwszej cześci tej strony.
 
 @Damian352
-<img src="/docs/adminPanel.png" alt="Panel administratorski">
+![Panel administratorski](/docs/adminPanel.png)
 
 ## Api
 @Damian352
