@@ -58,7 +58,7 @@ const index = async (req, res) => {
             User,
             odsluchane
         });
-    });
+    }).clone();
 };
 
 const suggestionSong = (req, res) => {
@@ -76,9 +76,11 @@ const suggestionSong = (req, res) => {
     });
 };
 
-const logOut = (req, res) => {
-    req.logout()
-    res.redirect('/login');
+const logOut = (req, res, next) => {
+    req.logout(function (err) {
+        if (err) { return next(err); }
+        res.redirect('/login');
+    });
 };
 
 // logowanie i rejestracja
