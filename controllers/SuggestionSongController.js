@@ -12,7 +12,7 @@ const addSong = async (req, res) => {
       if(track != null) {
         resultOurDatabase = track;
       }
-  });
+  }).clone();
 
   // Add to the next day;
   if (resultOurDatabase != null) {

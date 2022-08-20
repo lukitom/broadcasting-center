@@ -18,7 +18,7 @@ const index = async (req, res) => {
         if(result){
             songs = result;
         }
-    });
+    }).clone();
 
     var playlista = [];
     var odsluchane = [];
@@ -39,7 +39,7 @@ const index = async (req, res) => {
     // przypisanie do obiektu User czy użytkownik jest zalogowany
     if(req.session.passport && req.session.passport.user){
         User.logged = req.session.passport.user._id;
-        User.admin = (req.session.passport.user.permission == 'admin') ? true : false;
+        User.admin = (req.session.passport.user.permission === 'admin');
     }
 
     await res.render('index',{
@@ -56,7 +56,7 @@ const suggestionSong = (req, res) => {
 
     if (req.session.passport.user) {
         User.logged = req.session.passport.user._id;
-        User.admin = (req.session.passport.user.permission == 'admin') ? true : false;
+        User.admin = (req.session.passport.user.permission === 'admin');
     }
 
     res.render('suggestionSong', {
@@ -100,7 +100,7 @@ const adminPanel =(req,res) =>{
 
     if (req.session.passport.user) {
         User.logged = req.session.passport.user._id;
-        User.admin = (req.session.passport.user.permission == 'admin') ? true : false;
+        User.admin = (req.session.passport.user.permission === 'admin');
     }
     res.render('adminPanel',{
         User
